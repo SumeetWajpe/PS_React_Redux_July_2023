@@ -17,21 +17,35 @@
       //   var z = 300; // window.z
       //   let y = 200; // not available on window context
 
-      const PI = 3.14;
+      //   const PI = 3.14;
       //   const PI;// Error
       //   PI = 3.14; // Error !
       //   PI = 3.14533; // Error !
-      const company = { name: "Sapient", location: "Gurugram" };
-      company.name = "Publicis Sapient";
+      //   const company = { name: "Sapient", location: "Gurugram" };
+      //   company.name = "Publicis Sapient";
 
       // company = {}; // Error !
 
       // Destructuring = Objects + Arrays
-      let cars = ["BMW", "AUDI", "MERC"];
+      //   let cars = ["BMW", "AUDI", "MERC"];
       //   let firstCar = cars[0];
       //   let secondCar = cars[1];
       // OR
-      let [firstCar, , secondCar, thirdCar="Unknown"] = cars;
+      //   let [firstCar, ,secondCar, thirdCar="Unknown"] = cars;
+
+      // Objects
+      let company = { name: "Sapient", city: "Gurugram", isMNC: true };
+      //   let name = company.name;
+      //   let location = company.location;
+      //   let isMNC = company["isMNC"];
+      // OR
+      let { name, city, isMNC } = company;
+
+      function printCompany({ name, isMNC }) {
+        console.log("The company " + name + " is a MNC : " + isMNC);
+      }
+
+      printCompany(company);
     </script>
   </head>
   <body></body>
