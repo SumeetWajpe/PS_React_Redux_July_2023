@@ -14,7 +14,7 @@ let company: Company = { name: "IBM" };
 
 // class
 class Car {
-  //private id: number;
+  // private id: number;
   public name: string;
   public speed: number;
 
@@ -35,7 +35,7 @@ class Car {
 class JamesBondCar extends Car {
   isArmed: boolean = false;
   constructor(name: string, speed: number, isArmed: boolean) {
-    super(name, speed);
+    super(name, speed); // a call to base class constructor
     this.isArmed = isArmed;
   }
   accelerate(): string {
@@ -46,3 +46,23 @@ class JamesBondCar extends Car {
 let jbc = new JamesBondCar("Aston Martin", 300, true);
 
 console.log(jbc.accelerate());
+
+// interface IHuman {
+//   generation: string;
+// }
+
+// interface IPerson {
+//   name: string;
+//   age: number;
+//   walk: () => void;
+//   run?: () => void; //optional
+// }
+
+// class Person implements IPerson, IHuman {
+//   generation: string = "X";
+//   name: string;
+//   age: number;
+//   walk() {
+//     console.log("Walking");
+//   }
+// }
