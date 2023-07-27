@@ -34,12 +34,22 @@
       //   let [firstCar, ,secondCar, thirdCar="Unknown"] = cars;
 
       // Objects
-      //   let company = { name: "Sapient", city: "Gurugram", isMNC: true };
+      // let company = { name: "Sapient", city: "Gurugram", isMNC: true };
       //   //   let name = company.name;
       //   //   let location = company.location;
       //   //   let isMNC = company["isMNC"];
       //   // OR
-      //   let { name, city, isMNC } = company;
+      // let { name, city, isMNC } = company;
+
+      // Nesting
+      let company = {
+        name: "Sapient",
+        details: { city: "Gurugram", isMNC: true },
+      };
+
+      let {
+        details: { city: LOCATION },
+      } = company;
 
       //   function printCompany({ name, isMNC }) {
       //     console.log("The company " + name + " is a MNC : " + isMNC);
