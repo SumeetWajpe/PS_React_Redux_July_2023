@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function Emp() {
+        this.salary = 200000;
+        console.log(this);
+        setTimeout(() => {
+          console.log(this);
+        }, 3000);
+      }
+
+      let e = new Emp();
+    </script>
+  </head>
+  <body></body>
+</html>
