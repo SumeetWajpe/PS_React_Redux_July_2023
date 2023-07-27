@@ -86,3 +86,11 @@ class Person implements IPerson {
     console.log("Walking");
   }
 }
+
+// Enhanced class syntax
+
+class EnhancedCar {
+  constructor(public name: string = "BMW", public speed: number = 200) {}
+}
+
+var eCar = new EnhancedCar();

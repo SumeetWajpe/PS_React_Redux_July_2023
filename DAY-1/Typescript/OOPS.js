@@ -61,3 +61,14 @@ var Person = /** @class */ (function () {
     };
     return Person;
 }());
+// Enhanced class syntax
+var EnhancedCar = /** @class */ (function () {
+    function EnhancedCar(name, speed) {
+        if (name === void 0) { name = "BMW"; }
+        if (speed === void 0) { speed = 200; }
+        this.name = name;
+        this.speed = speed;
+    }
+    return EnhancedCar;
+}());
+var eCar = new EnhancedCar();
