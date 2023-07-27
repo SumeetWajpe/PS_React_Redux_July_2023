@@ -52,20 +52,12 @@ var JamesBondCar = /** @class */ (function (_super) {
 }(Car));
 var jbc = new JamesBondCar("Aston Martin", 300, true);
 console.log(jbc.accelerate());
-// interface IHuman {
-//   generation: string;
-// }
-// interface IPerson {
-//   name: string;
-//   age: number;
-//   walk: () => void;
-//   run?: () => void; //optional
-// }
-// class Person implements IPerson, IHuman {
-//   generation: string = "X";
-//   name: string;
-//   age: number;
-//   walk() {
-//     console.log("Walking");
-//   }
-// }
+var Person = /** @class */ (function () {
+    function Person() {
+        this.generation = "X";
+    }
+    Person.prototype.walk = function () {
+        console.log("Walking");
+    };
+    return Person;
+}());

@@ -66,3 +66,23 @@ console.log(jbc.accelerate());
 //     console.log("Walking");
 //   }
 // }
+
+interface IHuman {
+  generation: string;
+}
+
+interface IPerson extends IHuman {
+  name: string;
+  age: number;
+  walk: () => void;
+  run?: () => void; //optional
+}
+
+class Person implements IPerson {
+  generation: string = "X";
+  name: string;
+  age: number;
+  walk() {
+    console.log("Walking");
+  }
+}
