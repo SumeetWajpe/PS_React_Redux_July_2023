@@ -71,9 +71,19 @@
 
       let player = {
         ...person,
-        isSeededOne: true,
-        recentTitle: "Wimbledon",
+        stats: {
+          isSeededOne: true, // firstrank
+          recentTitle: "Wimbledon",
+        },
         age: 20,
+      };
+      let {
+        stats: { isSeededOne: firstrank },
+      } = player;
+
+      let champion = {
+        ...player,
+        stats: { ...player.stats, isSeededOne: false },
       };
     </script>
   </head>
