@@ -1,24 +1,47 @@
 // Argument types
 
-function printBook(author: string, title: string): string {
-  //   console.log(author, title);
-  return "The book " + title + " is written by " + author;
-}
+// function printBook(author: string, title: string): string {
+//   //   console.log(author, title);
+//   return "The book " + title + " is written by " + author;
+// }
 
-console.log(printBook("Dr. APJ Abdul Kalam", "Wings of Fire"));
+// console.log(printBook("Dr. APJ Abdul Kalam", "Wings of Fire"));
 
-let x: string | number;
-x = 100;
-x = "Hello";
+// let x: string | number;
+// x = 100;
+// x = "Hello";
 // Hands-on
 // Add(x,y) -> accepts two numbers & returns either string(error) if x is zero or number (addition)
 
-function Add(x: number, y: number): number | string {
-  if (x === 0 || y === 0) {
-    return "x or y can not be zero";
-  }
+// function Add(x: number, y: number): number | string {
+//   if (x === 0 || y === 0) {
+//     return "x or y can not be zero";
+//   }
 
-  return x + y;
+//   return x + y;
+// }
+// let result: number | string = Add(4, 5);
+// console.log(result);
+
+// Optional parameters
+// function Add(x?: number, y?: number) {
+//   console.log(x, y);
+// }
+
+// Add();
+
+// Default Parameters
+function Add(x: number = 0, y: number = 0) {
+  console.log(x, y);
 }
-let result: number | string = Add(4, 5);
-console.log(result);
+
+Add();
+Add(20, 10);
+
+function printBook(author: string, ...titles: string[]) {
+  console.log(author, titles);
+}
+
+printBook("Dr. APJ Abdul Kalam", "Ignited minds", "Wings Of Fire");
+
+let Square = (x: number): number => x * x;
