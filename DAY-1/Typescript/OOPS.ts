@@ -89,8 +89,32 @@ class Person implements IPerson {
 
 // Enhanced class syntax
 
+// class Car {
+//   // private id: number;
+//   public name: string;
+//   public speed: number;
+
+//   constructor(name: string = "BMW", speed: number = 200) {
+//     this.name = name;
+//     this.speed = speed;
+//   }
+// }
+
+// OR
 class EnhancedCar {
   constructor(public name: string = "BMW", public speed: number = 200) {}
 }
 
 var eCar = new EnhancedCar();
+
+// Generics
+
+function Swap<T>(x: T, y: T) {
+  let temp: T;
+  temp = x;
+  x = y;
+  y = temp;
+}
+
+Swap<number>(20, 30);
+Swap<string>("Hello", "World");

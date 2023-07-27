@@ -62,6 +62,16 @@ var Person = /** @class */ (function () {
     return Person;
 }());
 // Enhanced class syntax
+// class Car {
+//   // private id: number;
+//   public name: string;
+//   public speed: number;
+//   constructor(name: string = "BMW", speed: number = 200) {
+//     this.name = name;
+//     this.speed = speed;
+//   }
+// }
+// OR
 var EnhancedCar = /** @class */ (function () {
     function EnhancedCar(name, speed) {
         if (name === void 0) { name = "BMW"; }
@@ -72,3 +82,12 @@ var EnhancedCar = /** @class */ (function () {
     return EnhancedCar;
 }());
 var eCar = new EnhancedCar();
+// Generics
+function Swap(x, y) {
+    var temp;
+    temp = x;
+    x = y;
+    y = temp;
+}
+Swap(20, 30);
+Swap("Hello", "World");
