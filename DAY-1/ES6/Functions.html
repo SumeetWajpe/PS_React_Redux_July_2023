@@ -16,19 +16,35 @@
       //   printBook();
 
       // Rest parameters
-      function printBook(author, bestSelling, ...titles) {
-        console.log(author, titles);
-      }
+      //   function printBook(...titles) {
+      //     console.log(titles);
+      //   }
 
-      printBook(
-        "Dr. APJ Abdul Kalam",
-        "Ignited minds",
-        "Wings Of Fire",
-        "India 2020",
-      );
+      //   printBook(
+      //     ["Dr. APJ Abdul Kalam", "Ignited minds"],
+      //     ["Wings Of Fire", "India 2020"],
+      //   );
 
-      printBook("Sachin Tendulkar", "Playing It My Way");
-      printBook("Sumeet Wajpe");
+      //   printBook("Sachin Tendulkar", "Playing It My Way");
+      //   printBook("Sumeet Wajpe");
+
+      // FUnction as an expression
+      //   let printBook = function (author, title) {
+      //     console.log(author, title);
+      //   };
+
+      //   printBook("Dr. APJ Abdul Kalam", "Ignited minds");
+
+      // Arrow Functions
+      //   let printBook = (author, title) => {
+      //     console.log(author, title);
+      //   };
+      let printBook = (author, title) =>
+        "The book " + title + " is written by " + author;
+
+      console.log(printBook("Dr. APJ Abdul Kalam", "Ignited minds"));
+
+      let test = () => "Testing 123";
     </script>
   </head>
   <body></body>
