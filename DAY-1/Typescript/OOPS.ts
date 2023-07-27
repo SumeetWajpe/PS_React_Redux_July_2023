@@ -5,12 +5,12 @@
 // }
 // let company: ICompany = { name: "IBM", city: "Pune", xyz: 123 };
 
-type Company = {
-  name: string;
-  city?: string; // optional
-};
+// type Company = {
+//   name: string;
+//   city?: string; // optional
+// };
 // let company: Company = { name: "IBM", city: "Pune", xyz: 123 };
-let company: Company = { name: "IBM" };
+//let company: Company = { name: "IBM" };
 
 // class
 class Car {
@@ -118,3 +118,47 @@ function Swap<T>(x: T, y: T) {
 
 Swap<number>(20, 30);
 Swap<string>("Hello", "World");
+
+// var cars: string[] = ["XYZ", "PQR"];
+
+var cars: Array<string> = new Array<string>("XYZ", "PQR");
+
+// class Emp {
+//   constructor(public name: string = "") {}
+// }
+
+// var company: Array<Emp> = new Array<Emp>(new Emp("John"), new Emp("Jim"));
+
+// class Point<T, V> {
+//   x: T;
+//   y: V;
+// }
+
+// let point = new Point<number, string>();
+
+// function printName<T>(firstName: T, lastName: T) {
+//   let fullName: T;
+//   fullName = (firstName + " " + lastName) as T;
+//   console.log("printName>>" + fullName);
+// }
+// printName<string>("renu", "yadav");
+
+//  Generics with Constraints
+class Emp {
+  constructor(public name: string = "") {}
+}
+
+class Manager extends Emp {}
+
+class SeniorManager extends Emp {}
+
+class Freelancer {}
+
+class Enterprise<T extends Emp> {
+  employees: T[];
+}
+
+var enterprise = new Enterprise<Manager>();
+var company = new Enterprise<SeniorManager>();
+var companiesWithFreelancer = new Enterprise<Freelancer>();
+var x = new Enterprise<string>();
