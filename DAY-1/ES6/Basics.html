@@ -34,18 +34,37 @@
       //   let [firstCar, ,secondCar, thirdCar="Unknown"] = cars;
 
       // Objects
-      let company = { name: "Sapient", city: "Gurugram", isMNC: true };
-      //   let name = company.name;
-      //   let location = company.location;
-      //   let isMNC = company["isMNC"];
-      // OR
-      let { name, city, isMNC } = company;
+      //   let company = { name: "Sapient", city: "Gurugram", isMNC: true };
+      //   //   let name = company.name;
+      //   //   let location = company.location;
+      //   //   let isMNC = company["isMNC"];
+      //   // OR
+      //   let { name, city, isMNC } = company;
 
-      function printCompany({ name, isMNC }) {
-        console.log("The company " + name + " is a MNC : " + isMNC);
-      }
+      //   function printCompany({ name, isMNC }) {
+      //     console.log("The company " + name + " is a MNC : " + isMNC);
+      //   }
 
-      printCompany(company);
+      //   printCompany(company);
+
+      // Spread Operator = Objects + Arrays
+      // Arrays
+      let cars = ["BMW", "AUDI", "MERC"];
+      let moreCars = ["TATA", "MAHINDRA"];
+      let allCars = [...cars, ...moreCars, "Hyundai"];
+
+      // Objects
+      let person = {
+        name: "Carlos Alcaraz",
+        country: "Spain",
+      };
+
+      let player = {
+        ...person,
+        isSeededOne: true,
+        recentTitle: "Wimbledon",
+        age: 20,
+      };
     </script>
   </head>
   <body></body>
