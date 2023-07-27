@@ -23,10 +23,8 @@ class Car {
     this.speed = speed;
   }
 
-  accelerate(): void {
-    console.log(
-      "The car " + this.name + " is running @ " + this.speed + " kmph !",
-    );
+  accelerate(): string {
+    return "The car " + this.name + " is running @ " + this.speed + " kmph !";
   }
 }
 
@@ -35,12 +33,16 @@ class Car {
 
 // Inheritance
 class JamesBondCar extends Car {
-  isArmed: boolean;
+  isArmed: boolean = false;
   constructor(name: string, speed: number, isArmed: boolean) {
     super(name, speed);
+    this.isArmed = isArmed;
+  }
+  accelerate(): string {
+    return super.accelerate() + " Is the car armed ? " + this.isArmed;
   }
 }
 
 let jbc = new JamesBondCar("Aston Martin", 300, true);
 
-jbc.accelerate();
+console.log(jbc.accelerate());

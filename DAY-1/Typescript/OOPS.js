@@ -30,7 +30,7 @@ var Car = /** @class */ (function () {
         this.speed = speed;
     }
     Car.prototype.accelerate = function () {
-        console.log("The car " + this.name + " is running @ " + this.speed + " kmph !");
+        return "The car " + this.name + " is running @ " + this.speed + " kmph !";
     };
     return Car;
 }());
@@ -40,9 +40,15 @@ var Car = /** @class */ (function () {
 var JamesBondCar = /** @class */ (function (_super) {
     __extends(JamesBondCar, _super);
     function JamesBondCar(name, speed, isArmed) {
-        return _super.call(this, name, speed) || this;
+        var _this = _super.call(this, name, speed) || this;
+        _this.isArmed = false;
+        _this.isArmed = isArmed;
+        return _this;
     }
+    JamesBondCar.prototype.accelerate = function () {
+        return _super.prototype.accelerate.call(this) + " Is the car armed ? " + this.isArmed;
+    };
     return JamesBondCar;
 }(Car));
 var jbc = new JamesBondCar("Aston Martin", 300, true);
-jbc.accelerate();
+console.log(jbc.accelerate());
