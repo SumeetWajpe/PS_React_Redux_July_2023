@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let aPromise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Success"), 1000);
+      });
+
+      aPromise
+        .then(msg => {
+          console.log("This got executed !");
+          throw new Error("Error !!!! ");
+        })
+        .then(() => console.log("This would also get executed !"))
+        .then(() => console.log("This would too get executed !"))
+        .catch(err => console.log(err));
+
+      console.log("program Ended !");
+    </script>
+  </head>
+  <body></body>
+</html>
