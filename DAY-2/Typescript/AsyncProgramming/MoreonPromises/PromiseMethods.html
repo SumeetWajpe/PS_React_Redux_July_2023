@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      let Promise1 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Success - 1 "), 1000);
+      });
+      let Promise2 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Success - 2 "), 100);
+      });
+      let Promise3 = new Promise((resolve, reject) => {
+        setTimeout(() => resolve("Success - 3"), 500);
+        // setTimeout(() => reject("Rejected - 3"), 100);
+      });
+
+      //   Promise.all([Promise1, Promise2, Promise3])
+      //     .then(results => console.log(results))
+      //     .catch(err => console.log(err));
+
+      Promise.race([Promise1, Promise2, Promise3])
+        .then(results => console.log(results))
+        .catch(err => console.log(err));
+    </script>
+  </head>
+  <body></body>
+</html>
