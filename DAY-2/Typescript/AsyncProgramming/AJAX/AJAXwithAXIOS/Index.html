@@ -6,15 +6,14 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      let promise = axios.get("https://jsonplaceholder.typicode.com/posts");
-      promise.then(
-        function (response) {
+      let promise = axios.get("https://jsonplaceholder.typicode.com/postsss");
+      promise
+        .then(function (response) {
           console.log(response.data);
-        },
-        function (err) {
-          console.log(err);
-        },
-      );
+        })
+        .catch(function (err) {
+          console.log("Catching Error : " + err);
+        });
     </script>
   </head>
   <body></body>
