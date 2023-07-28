@@ -4,6 +4,5 @@
     "noEmitOnError": true,
     "target": "ES6",
     "outFile": "bundle.js"
-    
   }
 }
