@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noEmitOnError": true,
+    "target": "ES6",
+    "outFile": "bundle.js"
+    
+  }
+}
