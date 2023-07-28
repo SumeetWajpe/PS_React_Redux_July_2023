@@ -7,8 +7,12 @@
     <script src="GetData.js"></script>
     <script>
       console.log("Started");
-      let response = GetData(function (responsePosts) {
-        console.log(responsePosts);
+      let response = GetData(function (err, responsePosts) {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(responsePosts);
+        }
       });
       console.log("Ended");
     </script>
