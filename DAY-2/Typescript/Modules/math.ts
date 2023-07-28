@@ -1,7 +1,12 @@
-export function Add(x: number, y: number): number {
+export function Addition(x: number, y: number): number {
   return x + y;
 }
 
-function Multiply(x: number, y: number): number {
+// one export default per module
+export default function Multiply(x: number, y: number): number {
   return x * y;
+}
+
+export function Divide(x: number, y: number): number {
+  return x / y;
 }
