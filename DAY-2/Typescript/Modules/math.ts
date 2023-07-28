@@ -10,3 +10,5 @@ export default function Multiply(x: number, y: number): number {
 export function Divide(x: number, y: number): number {
   return x / y;
 }
+
+

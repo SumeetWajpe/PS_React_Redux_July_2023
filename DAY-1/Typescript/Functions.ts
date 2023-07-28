@@ -46,9 +46,9 @@
 
 // let Square = (x: number): number => x * x;
 
-// let cars: string[] = ["BMW", "AUDI", "MERC"];
+let cars: string[] = ["BMW", "AUDI", "MERC"];
 
-// cars.forEach((car: string) => console.log(car));
+cars.forEach((car: string) => console.log(car));
 
 // constructor
 function Emp() {
