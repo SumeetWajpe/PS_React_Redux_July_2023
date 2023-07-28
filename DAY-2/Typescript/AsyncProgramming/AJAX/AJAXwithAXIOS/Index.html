@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      let promise = axios.get("https://jsonplaceholder.typicode.com/posts");
+      promise.then(
+        function (response) {
+          console.log(response.data);
+        },
+        function (err) {
+          console.log(err);
+        },
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
