@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      async function LoadPosts() {
+        try {
+          let response = await fetch(
+            "https://jsonplaceholder.typicode.com/posts",
+          );
+
+          if (response.ok) {
+            let posts = await response.json();
+            console.log(posts);
+          } else {
+            throw new Error("Something went wrong !" + response.status);
+          }
+
+          response = await fetch("https://jsonplaceholder.typicode.com/users");
+          if (response.ok) {
+            let users = await response.json();
+            console.log(users);
+          } else {
+            throw new Error("Something went wrong !" + response.status);
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      console.log("Started");
+      LoadPosts();
+      console.log("Ended");
+    </script>
+  </head>
+  <body></body>
+</html>
