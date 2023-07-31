@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.7.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.7.0/react-dom.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      let h1Element = React.createElement("h1", {}, "Hello React !");// virtual element
+      ReactDOM.render(h1Element, document.getElementById("root"));
+    </script>
+  </body>
+</html>

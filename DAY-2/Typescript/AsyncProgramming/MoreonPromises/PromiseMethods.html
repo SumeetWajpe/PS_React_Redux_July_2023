@@ -6,7 +6,10 @@
     <title>Document</title>
     <script>
       let Promise1 = new Promise((resolve, reject) => {
-        setTimeout(() => resolve("Success - 1 "), 1000);
+        setTimeout(() => {
+          console.log("Within Success - 1 ");
+          resolve("Success - 1 ");
+        }, 1000);
       });
       let Promise2 = new Promise((resolve, reject) => {
         setTimeout(() => resolve("Success - 2 "), 100);

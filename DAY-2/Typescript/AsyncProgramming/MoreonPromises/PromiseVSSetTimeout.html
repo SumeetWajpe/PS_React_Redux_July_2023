@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      setTimeout(() => console.log("Settimeout with 0"), 0);
+      let Promise1 = new Promise((resolve, reject) => {
+        resolve("Success - 1 ");
+      });
+      Promise1.then(msg => console.log(msg));
+    </script>
+  </head>
+  <body></body>
+</html>
