@@ -1,11 +1,16 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { Message, MessageModel } from "../message/message.component";
+import { Message } from "../message/message.component";
+import { MessageModel } from "../../models/message.model";
 
 class App extends React.Component {
   render(): React.ReactNode {
-    let messageOne:MessageModel = { message: "Hello", from: "John", to: "Kim" };
+    let messageOne: MessageModel = {
+      message: "Hello",
+      from: "John",
+      to: "Kim",
+    };
 
     return (
       <div className="App">
