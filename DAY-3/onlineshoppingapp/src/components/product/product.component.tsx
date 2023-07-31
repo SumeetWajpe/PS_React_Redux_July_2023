@@ -22,7 +22,10 @@ export default class Product extends Component<ProductProps> {
             <h5 className="card-title">{this.props.productdetails.title}</h5>
             <p className="card-text">
               {" "}
-              <Rating noofstars={this.props.productdetails.rating} />{" "}
+              <Rating
+                noofstars={this.props.productdetails.rating}
+                color="grey"
+              />{" "}
             </p>
 
             <p className="card-text">{this.props.productdetails.price}</p>

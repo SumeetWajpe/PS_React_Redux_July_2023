@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 type RatingProps = {
   noofstars: number;
+  color: string;
 };
 
 export default class Rating extends Component<RatingProps> {
@@ -9,7 +10,10 @@ export default class Rating extends Component<RatingProps> {
     let ratings = [];
     for (let index = 0; index < this.props.noofstars; index++) {
       ratings.push(
-        <i className="fa-solid fa-star" style={{ color: "orange" }}></i>,
+        <i
+          className="fa-solid fa-star"
+          style={{ color: this.props.color }}
+        ></i>,
       );
     }
     return <>{ratings}</>;
