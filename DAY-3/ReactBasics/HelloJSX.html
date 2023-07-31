@@ -24,7 +24,17 @@
           <h1 className="header" id="header"> Using JSX </h1>
         </section>
       );
-      ReactDOM.render(sectionElement, document.getElementById("root"));
+       let anothersectionElement = (
+        <section>
+          <h2 className="header" id="header"> Using JSX 2 !! </h2>
+        </section>
+      );
+
+      let wrapper = <div>
+        {sectionElement}
+        {anothersectionElement}
+      </div>
+      ReactDOM.render(wrapper, document.getElementById("root"));
     </script>
   </body>
 </html>
