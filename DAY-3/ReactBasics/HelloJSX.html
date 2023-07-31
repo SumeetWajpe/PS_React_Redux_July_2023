@@ -6,12 +6,16 @@
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.7.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.7.0/react-dom.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      let h1Element = React.createElement("h1", {}, "Hello React !"); // virtual element
-      let sectionElement = React.createElement("section", {}, h1Element);
+    <script type="text/jsx">
+      let sectionElement = (
+        <section>
+          <h1> Using JSX </h1>
+        </section>
+      );
       ReactDOM.render(sectionElement, document.getElementById("root"));
     </script>
   </body>
