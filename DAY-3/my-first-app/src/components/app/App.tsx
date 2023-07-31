@@ -10,6 +10,22 @@ class App extends React.Component {
       message: "Hello",
       from: "John",
       to: "Kim",
+      imageUrl:
+        "https://img.freepik.com/free-vector/hello-wording-comic-speech-bubble-pop-art-style_1150-39959.jpg?w=2000",
+    };
+    let messageTwo: MessageModel = {
+      message: "Hey",
+      from: "John",
+      to: "Kim",
+      imageUrl:
+        "https://i.scdn.co/image/ab6761610000e5eb7931715a93cf050c888145a3",
+    };
+    let messageThree: MessageModel = {
+      message: "Hola",
+      from: "John",
+      to: "Kim",
+      imageUrl:
+        "https://img.freepik.com/premium-vector/hola-hi-phrase-lettering-isolated-white-colourful-text-effect-design-vector-text-inscriptions-english-modern-creative-design-has-red-orange-yellow-colors_7280-7768.jpg?w=2000",
     };
 
     return (
@@ -19,6 +35,8 @@ class App extends React.Component {
         </header>
         <main>
           <Message messageDetails={messageOne} />
+          <Message messageDetails={messageTwo} />
+          <Message messageDetails={messageThree} />
         </main>
       </div>
     );
