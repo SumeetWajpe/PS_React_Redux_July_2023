@@ -7,13 +7,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.7.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.7.0/react-dom.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <style>
+      .header {
+        border: 2px solid red;
+        border-radius: 5px;
+        margin: 10px;
+        padding: 10px;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
     <script type="text/jsx">
       let sectionElement = (
         <section>
-          <h1> Using JSX </h1>
+          <h1 className="header" id="header"> Using JSX </h1>
         </section>
       );
       ReactDOM.render(sectionElement, document.getElementById("root"));
