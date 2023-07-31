@@ -1,22 +1,24 @@
 import React from "react";
 import { MessageProps } from "../../props/message.props";
-import "./message.style.css";
 
 export class Message extends React.Component<MessageProps> {
   render(): React.ReactNode {
     // called for every Message component instance
     console.log("Within Message Render method !");
     return (
-      <div className="msg-card">
+      <div className="col-md-3">
         <img
           src={this.props.messageDetails.imageUrl}
           height="150px"
           width="200px"
-          alt=""
+          className="card-img-top"
+          alt={this.props.messageDetails.message}
         />
-        <h2>{this.props.messageDetails.message}</h2>
-        <h3>From : {this.props.messageDetails.from}</h3>
-        <h3>To : {this.props.messageDetails.to}</h3>
+        <div className="card-body">
+          <h5 className="card-title">{this.props.messageDetails.message}</h5>
+          <p className="card-text">From : {this.props.messageDetails.from}</p>
+          <p className="card-text">To : {this.props.messageDetails.to}</p>
+        </div>
       </div>
     );
   }

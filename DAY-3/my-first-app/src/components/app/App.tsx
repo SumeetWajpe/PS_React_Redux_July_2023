@@ -41,7 +41,7 @@ class App extends React.Component {
         <header>
           <h1>All Messages</h1>
         </header>
-        <main className="msg-container">
+        <main className="row">
           {this.messages.map(msg => (
             <Message messageDetails={msg} />
           ))}
