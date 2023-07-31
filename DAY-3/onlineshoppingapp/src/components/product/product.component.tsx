@@ -21,9 +21,9 @@ export default class Product extends Component<ProductProps> {
             <h5 className="card-title">{this.props.productdetails.title}</h5>
             <p className="card-text">{this.props.productdetails.price}</p>
             {/* <p className="card-text">{this.props.productdetails.rating}</p> */}
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
-            <i className="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star" style={{ color: "orange" }}></i>
+            <i className="fa-solid fa-star" style={{ color: "orange" }}></i>
+            <i className="fa-solid fa-star" style={{ color: "orange" }}></i>
 
             <p className="card-text">{this.props.productdetails.likes}</p>
           </div>
