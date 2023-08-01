@@ -7,9 +7,12 @@ type ProductProps = {
 };
 
 export default class Product extends Component<ProductProps> {
+  state = { currLikes: this.props.productdetails.likes };
   IncrementLikes(): void {
     console.log("Within IncrementLikes");
-    this.props.productdetails.likes++; // For React(Component) props are readonly
+    // this.props.productdetails.likes++; // For React(Component) props are readonly
+    // this.state.currLikes++; // state is immutable
+    this.setState({ currLikes: this.state.currLikes + 1 });
   }
   render() {
     return (
@@ -33,12 +36,12 @@ export default class Product extends Component<ProductProps> {
             </p>
 
             <p className="card-text">₹.{this.props.productdetails.price}</p>
-
             <button
               className="btn btn-outline-primary"
               onClick={() => this.IncrementLikes()}
             >
-              {this.props.productdetails.likes}{" "}
+              {/* {this.props.productdetails.likes}{" "} */}
+              {this.state.currLikes}
               <i className="fa-regular fa-thumbs-up"></i>
             </button>
           </div>
