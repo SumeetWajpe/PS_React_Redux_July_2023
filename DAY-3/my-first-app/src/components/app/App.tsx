@@ -38,7 +38,9 @@ class App extends React.Component {
   ];
   render(): React.ReactNode {
     return (
-      <MessageFunctional message="Hola !" />
+      <MessageFunctional
+        messagedetails={{ message: "Hello", from: "Jim", to: "Kim" }}
+      />
       // <div>
       //   <header>
       //     <h1>All Messages</h1>
