@@ -7,6 +7,9 @@ type ProductProps = {
 };
 
 export default class Product extends Component<ProductProps> {
+  IncrementLikes(): void {
+    console.log("Within IncrementLikes");
+  }
   render() {
     return (
       <div className="col-md-3 my-1">
@@ -24,13 +27,19 @@ export default class Product extends Component<ProductProps> {
               {" "}
               <Rating
                 noofstars={this.props.productdetails.rating}
-                color="grey"
+                color="orange"
               />{" "}
             </p>
 
-            <p className="card-text">{this.props.productdetails.price}</p>
+            <p className="card-text">₹.{this.props.productdetails.price}</p>
 
-            <p className="card-text">{this.props.productdetails.likes}</p>
+            <button
+              className="btn btn-outline-primary"
+              onClick={() => this.IncrementLikes()}
+            >
+              {this.props.productdetails.likes}{" "}
+              <i className="fa-regular fa-thumbs-up"></i>
+            </button>
           </div>
         </div>
       </div>
