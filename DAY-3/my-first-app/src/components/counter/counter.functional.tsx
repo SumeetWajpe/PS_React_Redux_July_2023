@@ -1,14 +1,25 @@
 import { useState } from "react";
 
 export let Counter: React.FC = () => {
-  let [count, setCount] = useState(10);
+  let [data, setData] = useState({ count: 10, age: 18 });
+
   return (
     <>
-      <p>{count}</p>
+      <p>{data.count}</p>
       <button
         className="btn btn-primary"
         onClick={() => {
-          setCount(count + 1);
+          setData({ ...data, count: data.count + 1 });
+        }}
+      >
+        ++
+      </button>
+      <hr />
+      <p>{data.age}</p>
+      <button
+        className="btn btn-primary"
+        onClick={() => {
+          setData({ ...data, age: data.age + 1 });
         }}
       >
         ++
