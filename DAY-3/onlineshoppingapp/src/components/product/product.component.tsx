@@ -4,6 +4,7 @@ import Rating from "../rating/rating.component";
 
 type ProductProps = {
   productdetails: ProductModel;
+  DeleteProduct: (id: number) => void;
 };
 
 type ProductState = {
@@ -21,6 +22,7 @@ export default class Product extends Component<ProductProps, ProductState> {
     this.setState({ currLikes: this.state.currLikes + 1 });
   }
   render() {
+    console.log("Within Render..");
     return (
       <div className="col-md-3 my-1">
         <div className="card">
@@ -49,6 +51,14 @@ export default class Product extends Component<ProductProps, ProductState> {
               {/* {this.props.productdetails.likes}{" "} */}
               {this.state.currLikes}
               <i className="fa-regular fa-thumbs-up"></i>
+            </button>
+            <button
+              className="btn btn-outline-danger mx-1"
+              onClick={() =>
+                this.props.DeleteProduct(this.props.productdetails.id)
+              }
+            >
+              <i className="fa-solid fa-trash"></i>
             </button>
           </div>
         </div>

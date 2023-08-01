@@ -13,6 +13,7 @@ export default class Rating extends Component<RatingProps> {
         <i
           className="fa-solid fa-star"
           style={{ color: this.props.color }}
+          key={index}
         ></i>,
       );
     }
