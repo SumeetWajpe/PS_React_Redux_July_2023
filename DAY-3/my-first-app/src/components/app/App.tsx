@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { Message } from "../message/message.component";
 import { MessageModel } from "../../models/message.model";
+import { MessageFunctional } from "../functional/functional.component";
 
 class App extends React.Component {
   messages: MessageModel[] = [
@@ -37,16 +38,17 @@ class App extends React.Component {
   ];
   render(): React.ReactNode {
     return (
-      <div>
-        <header>
-          <h1>All Messages</h1>
-        </header>
-        <main className="row">
-          {this.messages.map(msg => (
-            <Message messageDetails={msg} />
-          ))}
-        </main>
-      </div>
+      <MessageFunctional message="Hola !" />
+      // <div>
+      //   <header>
+      //     <h1>All Messages</h1>
+      //   </header>
+      //   <main className="row">
+      //     {this.messages.map(msg => (
+      //       <Message messageDetails={msg} />
+      //     ))}
+      //   </main>
+      // </div>
     );
   }
 }

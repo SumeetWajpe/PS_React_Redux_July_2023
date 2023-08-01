@@ -16,13 +16,13 @@ export default class Product extends Component<ProductProps, ProductState> {
     currLikes: this.props.productdetails.likes,
   };
   IncrementLikes(): void {
-    console.log("Within IncrementLikes");
+    // console.log("Within IncrementLikes");
     // this.props.productdetails.likes++; // For React(Component) props are readonly
     // this.state.currLikes++; // state is immutable
     this.setState({ currLikes: this.state.currLikes + 1 });
   }
   render() {
-    console.log("Within Render..");
+    // console.log("Within Render..");
     return (
       <div className="col-md-3 my-1">
         <div className="card">
