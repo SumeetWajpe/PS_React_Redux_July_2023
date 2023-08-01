@@ -4,6 +4,7 @@ import "./App.css";
 import { Message } from "../message/message.component";
 import { MessageModel } from "../../models/message.model";
 import { MessageFunctional } from "../functional/functional.component";
+import { Counter } from "../counter/counter.functional";
 
 class App extends React.Component {
   messages: MessageModel[] = [
@@ -38,9 +39,10 @@ class App extends React.Component {
   ];
   render(): React.ReactNode {
     return (
-      <MessageFunctional
-        messagedetails={{ message: "Hello", from: "Jim", to: "Kim" }}
-      />
+      <Counter />
+      // <MessageFunctional
+      //   messagedetails={{ message: "Hello", from: "Jim", to: "Kim" }}
+      // />
       // <div>
       //   <header>
       //     <h1>All Messages</h1>
