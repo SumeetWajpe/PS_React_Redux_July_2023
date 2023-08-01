@@ -6,8 +6,14 @@ type ProductProps = {
   productdetails: ProductModel;
 };
 
-export default class Product extends Component<ProductProps> {
-  state = { currLikes: this.props.productdetails.likes };
+type ProductState = {
+  currLikes: number;
+};
+
+export default class Product extends Component<ProductProps, ProductState> {
+  state: Readonly<ProductState> = {
+    currLikes: this.props.productdetails.likes,
+  };
   IncrementLikes(): void {
     console.log("Within IncrementLikes");
     // this.props.productdetails.likes++; // For React(Component) props are readonly
