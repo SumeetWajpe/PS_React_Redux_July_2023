@@ -9,6 +9,7 @@ type ProductProps = {
 export default class Product extends Component<ProductProps> {
   IncrementLikes(): void {
     console.log("Within IncrementLikes");
+    this.props.productdetails.likes++; // For React(Component) props are readonly
   }
   render() {
     return (
