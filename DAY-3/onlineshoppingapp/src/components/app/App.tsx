@@ -6,10 +6,9 @@ import Posts from "../posts/posts.component";
 import NewProduct from "../newproduct/newproduct.component";
 
 let App: React.FC = () => {
-  // return <ListOfProducts />;
+  return <ListOfProducts />;
   // return <GetProductById />;
   // return <Posts />;
-  return <NewProduct />;
 };
 
 export default App;

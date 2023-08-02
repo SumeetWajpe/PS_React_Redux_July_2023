@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Product from "../product/product.component";
 import { ProductModel } from "../../models/product.model";
+import NewProduct from "../newproduct/newproduct.component";
 
 let ListOfProducts: React.FC = () => {
   let [products, setProducts] = useState<ProductModel[]>([]); // best practise
@@ -8,6 +9,11 @@ let ListOfProducts: React.FC = () => {
   let DeleteAProduct = (id: number) => {
     console.log("Delete a product - ", id);
     setProducts(products.filter(product => product.id !== id));
+  };
+
+  let AddANewProduct = (newProductToBeAdded: ProductModel) => {
+    console.log("Adding a new Product");
+    console.log(newProductToBeAdded);
   };
 
   // componentDidMount + componentDidUpdate
@@ -18,6 +24,11 @@ let ListOfProducts: React.FC = () => {
   }, []);
   return (
     <>
+      <NewProduct
+        AddANewProduct={(newProduct: ProductModel) =>
+          AddANewProduct(newProduct)
+        }
+      />
       <header>
         <h1>List Of Products</h1>
       </header>

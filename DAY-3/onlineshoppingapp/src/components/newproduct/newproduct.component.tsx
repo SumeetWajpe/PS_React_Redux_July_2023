@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { ProductModel } from "../../models/product.model";
 
-const NewProduct = () => {
+type NewProductProps = {
+  AddANewProduct: (newProduct: ProductModel) => void;
+};
+
+const NewProduct = (props: NewProductProps) => {
   const [newProduct, setNewProduct] = useState<ProductModel>(
     new ProductModel(),
   );
@@ -13,8 +17,8 @@ const NewProduct = () => {
       <div className="d-flex justify-content-center align-items-center m-2">
         <form
           onSubmit={e => {
-            e.preventDefault();
-            console.log(newProduct);
+            e.preventDefault(); // stops the page from refereshing
+            props.AddANewProduct(newProduct);
           }}
         >
           <div className="row my-1">
