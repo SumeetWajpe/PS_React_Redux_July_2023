@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Product from "../product/product.component";
 import { ProductModel } from "../../models/product.model";
-import NewProduct from "../newproduct/newproduct.component";
+import NewProductWithHookForm from "../newproduct/newProduct.reacthookform";
 
 let ListOfProducts: React.FC = () => {
   let [products, setProducts] = useState<ProductModel[]>([]); // best practise
@@ -23,7 +23,7 @@ let ListOfProducts: React.FC = () => {
   }, []);
   return (
     <>
-      <NewProduct
+      <NewProductWithHookForm
         AddANewProduct={(newProduct: ProductModel) =>
           AddANewProduct(newProduct)
         }
