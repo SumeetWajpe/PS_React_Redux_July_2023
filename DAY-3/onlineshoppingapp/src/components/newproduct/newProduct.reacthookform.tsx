@@ -6,10 +6,12 @@ type NewProductProps = {
   AddANewProduct: (newProduct: ProductModel) => void;
 };
 
-
-
 const NewProductWithHookForm = (props: NewProductProps) => {
-  const { register, handleSubmit } = useForm<ProductModel>(); // returns an object
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ProductModel>({ mode: "all" }); // returns an object
   return (
     <>
       <header>
@@ -37,7 +39,13 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductId">Id : </label>
             </div>
             <div className="col-md-4">
-              <input type="number" id="txtProductId" {...register("id")} />
+              <input
+                type="number"
+                id="txtProductId"
+                {...register("id", { required: true })}
+              />
+
+              {errors.id && <p style={{ color: "red" }}>Id is Required!</p>}
             </div>
           </div>
           <div className="row my-1">
