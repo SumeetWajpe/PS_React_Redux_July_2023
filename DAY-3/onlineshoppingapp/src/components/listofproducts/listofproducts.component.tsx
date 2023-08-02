@@ -17,7 +17,7 @@ let ListOfProducts: React.FC = () => {
         <h1>List Of Products</h1>
       </header>
       <main className="row">
-        {products.map(product => (
+        {products?.map(product => (
           <Product productdetails={product} key={product.id} />
         ))}
       </main>
