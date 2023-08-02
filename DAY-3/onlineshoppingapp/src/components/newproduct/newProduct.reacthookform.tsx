@@ -53,7 +53,24 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductTitle">Title : </label>
             </div>
             <div className="col-md-4">
-              <input type="text" id="txtProductTitle" {...register("title")} />
+              <input
+                type="text"
+                id="txtProductTitle"
+                {...register("title", {
+                  required: true,
+                  maxLength: {
+                    value: 20,
+                    message: "You exceeded 20 chars limit!",
+                  },
+                })}
+              />
+              {errors.title && (
+                <p style={{ color: "red" }}>
+                  {errors.title.type === "maxLength"
+                    ? errors.title.message
+                    : "Title is Required!"}
+                </p>
+              )}
             </div>
           </div>
           <div className="row my-1">
