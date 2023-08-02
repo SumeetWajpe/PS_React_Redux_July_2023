@@ -36,6 +36,7 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
             {/* {this.props.productdetails.likes}{" "} */}
             {currLikes} <i className="fa-regular fa-thumbs-up"></i>
           </button>
+
           <button className="btn btn-outline-danger mx-1">
             <i className="fa-solid fa-trash"></i>
           </button>
