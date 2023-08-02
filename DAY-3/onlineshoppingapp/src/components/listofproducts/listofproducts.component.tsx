@@ -12,8 +12,7 @@ let ListOfProducts: React.FC = () => {
   };
 
   let AddANewProduct = (newProductToBeAdded: ProductModel) => {
-    console.log("Adding a new Product");
-    console.log(newProductToBeAdded);
+    setProducts([...products, newProductToBeAdded]);
   };
 
   // componentDidMount + componentDidUpdate
