@@ -6,13 +6,10 @@ type NewProductProps = {
   AddANewProduct: (newProduct: ProductModel) => void;
 };
 
-type NewProductInput = {
-  Id: number;
-  Title: string;
-};
+
 
 const NewProductWithHookForm = (props: NewProductProps) => {
-  const { register, handleSubmit } = useForm<NewProductInput>(); // returns an object
+  const { register, handleSubmit } = useForm<ProductModel>(); // returns an object
   return (
     <>
       <header>
@@ -20,16 +17,27 @@ const NewProductWithHookForm = (props: NewProductProps) => {
       </header>
       <div className="d-flex justify-content-center align-items-center m-2">
         <form
-          onSubmit={handleSubmit(data => {
-            console.log(data);
-          })}
+          onSubmit={handleSubmit(
+            ({ id, title, price, rating, imageUrl, description, likes }) => {
+              let newProduct = new ProductModel(
+                id,
+                title,
+                price,
+                rating,
+                likes,
+                imageUrl,
+                description,
+              );
+              props.AddANewProduct(newProduct);
+            },
+          )}
         >
           <div className="row my-1">
             <div className="col-md-4">
               <label htmlFor="txtProductId">Id : </label>
             </div>
             <div className="col-md-4">
-              <input type="number" id="txtProductId" {...register("Id")} />
+              <input type="number" id="txtProductId" {...register("id")} />
             </div>
           </div>
           <div className="row my-1">
@@ -37,7 +45,7 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductTitle">Title : </label>
             </div>
             <div className="col-md-4">
-              <input type="text" id="txtProductTitle" {...register("Title")} />
+              <input type="text" id="txtProductTitle" {...register("title")} />
             </div>
           </div>
           <div className="row my-1">
@@ -45,7 +53,11 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductPrice">Price : </label>
             </div>
             <div className="col-md-4">
-              <input type="number" id="txtProductPrice" />
+              <input
+                type="number"
+                id="txtProductPrice"
+                {...register("price")}
+              />
             </div>
           </div>
           <div className="row my-1">
@@ -53,7 +65,11 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductLikes">Likes : </label>
             </div>
             <div className="col-md-4">
-              <input type="number" id="txtProductLikes" />
+              <input
+                type="number"
+                id="txtProductLikes"
+                {...register("likes")}
+              />
             </div>
           </div>
           <div className="row my-1">
@@ -61,7 +77,11 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductRating">Rating : </label>
             </div>
             <div className="col-md-4">
-              <input type="number" id="txtProductRating" />
+              <input
+                type="number"
+                id="txtProductRating"
+                {...register("rating")}
+              />
             </div>
           </div>
           <div className="row my-1">
@@ -69,7 +89,11 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductImage">Imageurl : </label>
             </div>
             <div className="col-md-4">
-              <input type="text" id="txtProductImage" />
+              <input
+                type="text"
+                id="txtProductImage"
+                {...register("imageUrl")}
+              />
             </div>
           </div>
           <div className="row my-1">
@@ -81,6 +105,7 @@ const NewProductWithHookForm = (props: NewProductProps) => {
                 id="txtProductDescription"
                 cols={25}
                 rows={5}
+                {...register("description")}
               ></textarea>
             </div>
           </div>
