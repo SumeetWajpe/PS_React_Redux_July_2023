@@ -6,17 +6,27 @@ let GetProductById: React.FC = () => {
   let [theProduct, setTheProduct] = useState<ProductModel>(new ProductModel());
 
   useEffect(() => {
-    fetch("http://localhost:3500/products/" + productId)
-      .then(res => res.json())
-      .then(product => setTheProduct(product));
+    // fetch("http://localhost:3500/products/" + productId)
+    //   .then(res => res.json())
+    //   .then(product => setTheProduct(product));
+    try {
+      (async () => {
+        let res = await fetch("http://localhost:3500/products/" + productId);
+        let product = await res.json();
+        setTheProduct(product);
+      })();
+    } catch (error) {
+      console.log(error);
+    }
   }, [productId]);
+
   return (
     <>
       <label htmlFor="txtProductId">Product Id : </label>
       <input
         type="text"
         id="txtProductId"
-        onInput={(e: any) => setProductId(e.target.value)}
+        onChange={(e: any) => setProductId(e.target.value)}
       />
 
       <p>{theProduct.title}</p>
