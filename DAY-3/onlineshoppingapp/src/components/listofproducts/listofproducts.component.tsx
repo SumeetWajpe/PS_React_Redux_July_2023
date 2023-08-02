@@ -5,6 +5,11 @@ import { ProductModel } from "../../models/product.model";
 let ListOfProducts: React.FC = () => {
   let [products, setProducts] = useState<ProductModel[]>([]); // best practise
 
+  let DeleteAProduct = (id: number) => {
+    console.log("Delete a product - ", id);
+    setProducts(products.filter(product => product.id !== id));
+  };
+
   // componentDidMount + componentDidUpdate
   useEffect(() => {
     fetch("http://localhost:3500/products")
@@ -18,7 +23,11 @@ let ListOfProducts: React.FC = () => {
       </header>
       <main className="row">
         {products?.map(product => (
-          <Product productdetails={product} key={product.id} />
+          <Product
+            productdetails={product}
+            key={product.id}
+            DeleteAProduct={(id: number) => DeleteAProduct(id)}
+          />
         ))}
       </main>
     </>

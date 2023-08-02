@@ -4,6 +4,7 @@ import Rating from "../rating/rating.component";
 
 type ProductProps = {
   productdetails: ProductModel;
+  DeleteAProduct: (id: number) => void;
 };
 
 let Product: React.FC<ProductProps> = (props: ProductProps) => {
@@ -37,7 +38,10 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
             {currLikes} <i className="fa-regular fa-thumbs-up"></i>
           </button>
 
-          <button className="btn btn-outline-danger mx-1">
+          <button
+            className="btn btn-outline-danger mx-1"
+            onClick={() => props.DeleteAProduct(props.productdetails.id)}
+          >
             <i className="fa-solid fa-trash"></i>
           </button>
         </div>
