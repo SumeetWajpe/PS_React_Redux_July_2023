@@ -6,8 +6,13 @@ type NewProductProps = {
   AddANewProduct: (newProduct: ProductModel) => void;
 };
 
+type NewProductInput = {
+  Id: number;
+  Title: string;
+};
+
 const NewProductWithHookForm = (props: NewProductProps) => {
-  const { register, handleSubmit } = useForm(); // returns an object
+  const { register, handleSubmit } = useForm<NewProductInput>(); // returns an object
   return (
     <>
       <header>
@@ -24,11 +29,7 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductId">Id : </label>
             </div>
             <div className="col-md-4">
-              <input
-                type="number"
-                id="txtProductId"
-                {...register("Id")}
-              />
+              <input type="number" id="txtProductId" {...register("Id")} />
             </div>
           </div>
           <div className="row my-1">
@@ -36,7 +37,7 @@ const NewProductWithHookForm = (props: NewProductProps) => {
               <label htmlFor="txtProductTitle">Title : </label>
             </div>
             <div className="col-md-4">
-              <input type="text" id="txtProductTitle" />
+              <input type="text" id="txtProductTitle" {...register("Title")} />
             </div>
           </div>
           <div className="row my-1">
@@ -96,7 +97,6 @@ const NewProductWithHookForm = (props: NewProductProps) => {
 };
 
 export default NewProductWithHookForm;
-
 
 // import React, { useState } from "react";
 // import { ProductModel } from "../../models/product.model";
