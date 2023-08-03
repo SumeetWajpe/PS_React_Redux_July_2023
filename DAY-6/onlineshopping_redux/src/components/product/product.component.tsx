@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { ProductModel } from "../../models/product.model";
 import Rating from "../rating/rating.component";
+import { useDispatch } from "react-redux";
+import { incrementLikes } from "../../redux/slices/products.slices";
 // import { Link } from "react-router-dom";
 
 type ProductProps = {
@@ -8,7 +10,7 @@ type ProductProps = {
 };
 
 let Product: React.FC<ProductProps> = (props: ProductProps) => {
-  let [currLikes, setCurrLikes] = useState(props.productdetails.likes);
+  let dispatch = useDispatch();
   return (
     <div className="col-md-3 my-1">
       <div className="card">
@@ -35,10 +37,10 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
           <p className="card-text">₹.{props.productdetails.price}</p>
           <button
             className="btn btn-outline-primary"
-            onClick={() => setCurrLikes(currLikes + 1)}
+            onClick={() => dispatch(incrementLikes(props.productdetails.id))}
           >
-            {/* {this.props.productdetails.likes}{" "} */}
-            {currLikes} <i className="fa-regular fa-thumbs-up"></i>
+            {props.productdetails.likes}{" "}
+            <i className="fa-regular fa-thumbs-up"></i>
           </button>
 
           <button className="btn btn-outline-danger mx-1">

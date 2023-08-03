@@ -64,6 +64,7 @@ let productSlice = createSlice({
   reducers: {
     incrementLikes: (store, action) => {
       console.log("Within incrementLikes");
+      console.log(action);
       return store; // updated store
     },
   },
