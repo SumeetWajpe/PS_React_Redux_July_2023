@@ -17,7 +17,7 @@ let App: React.FC = () => {
         <Header />
         <Routes>
           <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="" element={<ListOfProducts />} />
+            <Route index element={<ListOfProducts />} />
             <Route path="posts" element={<Posts />} />
             <Route path="getproductbyid" element={<GetProductById />} />
           </Route>
