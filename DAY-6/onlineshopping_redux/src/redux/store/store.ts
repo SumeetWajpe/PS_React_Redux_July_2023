@@ -4,3 +4,4 @@ import posts from "../slices/posts.slice";
 
 const store = configureStore({ reducer: { products, posts } });
 export default store;
+export type AppState = ReturnType<typeof store.getState>;

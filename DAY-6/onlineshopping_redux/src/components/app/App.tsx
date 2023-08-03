@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
+import ListOfProducts from "../listofproducts/listofproducts.component";
 
 function App() {
-  const products = useSelector((store: any) => store.products);
-  console.log(products);
-  return <div className="App">App</div>;
+  return <ListOfProducts />;
 }
 
 export default App;
