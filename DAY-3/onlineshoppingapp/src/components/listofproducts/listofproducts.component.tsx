@@ -23,11 +23,11 @@ let ListOfProducts: React.FC = () => {
   }, []);
   return (
     <>
-      <NewProductWithHookForm
+      {/* <NewProductWithHookForm
         AddANewProduct={(newProduct: ProductModel) =>
           AddANewProduct(newProduct)
         }
-      />
+      /> */}
       <header>
         <h1>List Of Products</h1>
       </header>
