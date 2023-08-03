@@ -44,7 +44,16 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
 
           <button
             className="btn btn-outline-danger mx-1"
-            onClick={() => props.DeleteAProduct(props.productdetails.id)}
+            onClick={() => {
+              fetch(
+                "http://localhost:3500/products/" + props.productdetails.id,
+                { method: "DELETE" },
+              ).then(res => {
+                if (res.ok) {
+                  props.DeleteAProduct(props.productdetails.id);
+                }
+              });
+            }}
           >
             <i className="fa-solid fa-trash"></i>
           </button>
