@@ -9,7 +9,7 @@ const Posts: React.FC = () => {
       let responseposts = await res.json();
       setPosts(responseposts);
     })();
-  });
+  }, []);
   return (
     <div>
       <header>
