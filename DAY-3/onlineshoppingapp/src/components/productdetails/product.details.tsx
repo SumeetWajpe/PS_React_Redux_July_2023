@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ProductModel } from "../../models/product.model";
 import Rating from "../rating/rating.component";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [theProduct, setTheProduct] = useState(new ProductModel());
   useEffect(() => {
     fetch(`http://localhost:3500/products/${id}`)
@@ -32,9 +33,17 @@ const ProductDetails: React.FC = () => {
             <h2>{theProduct.title}</h2>
             <Rating noofstars={theProduct.rating} color="orange" />
             <p className="card-text">₹.{theProduct.price}</p>
-            <p className="card-text">{theProduct.likes}</p>
 
+            <button className="btn btn-outline-primary">
+              {theProduct.likes} {} <i className="fa-regular fa-thumbs-up"></i>
+            </button>
             <div>{theProduct.description}</div>
+            <button
+              className="btn btn-success"
+              onClick={() => navigate("/dashboard/products")}
+            >
+              <i className="fa-solid fa-arrow-left"></i>
+            </button>
           </div>
         </div>
       </main>
