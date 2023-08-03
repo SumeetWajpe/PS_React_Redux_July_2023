@@ -6,6 +6,7 @@ import Posts from "../posts/posts.component";
 
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Header from "../header/header.component";
+import Dashboard from "../dashboard/dashboard.component";
 
 let App: React.FC = () => {
   return (
@@ -15,9 +16,12 @@ let App: React.FC = () => {
         {/* <Link to="/">Products</Link> | <Link to="/posts"> Posts </Link> */}
         <Header />
         <Routes>
-          <Route path="/" element={<ListOfProducts />} />
-          <Route path="/posts" element={<Posts />} />
-          <Route path="/getproductbyid" element={<GetProductById />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route path="" element={<ListOfProducts />} />
+            <Route path="posts" element={<Posts />} />
+            <Route path="getproductbyid" element={<GetProductById />} />
+          </Route>
+
           <Route
             path="*"
             element={
