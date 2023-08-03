@@ -10,6 +10,15 @@
       "description": "MacBook Pro. Our most powerful notebooks. Fast M1 processors, incredible graphics, and spectacular Retina displays. Now available in a 14-inch model.MacBook Pro. Our most powerful notebooks. Fast M1 processors, incredible graphics, and spectacular Retina displays. Now available in a 14-inch model."
     },
     {
+      "id": 2,
+      "title": "Nikon 7200",
+      "price": 200000,
+      "rating": 4,
+      "likes": 500,
+      "imageUrl": "https://i0.wp.com/dailylearn.com/wp-content/uploads/2023/01/How-to-Shoot-Video-on-Your-Nikon-d7200.jpg",
+      "description": "MacBook Pro. Our most powerful notebooks. Fast M1 processors, incredible graphics, and spectacular Retina displays. Now available in a 14-inch model.MacBook Pro. Our most powerful notebooks. Fast M1 processors, incredible graphics, and spectacular Retina displays. Now available in a 14-inch model."
+    },
+    {
       "id": 3,
       "title": "Nikon Alucon",
       "price": 20000,
