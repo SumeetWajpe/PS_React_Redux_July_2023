@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { ProductModel } from "../../models/product.model";
 import { useForm } from "react-hook-form";
 
-type NewProductProps = {
-  AddANewProduct: (newProduct: ProductModel) => void;
-};
+// type NewProductProps = {
+//   AddANewProduct: (newProduct: ProductModel) => void;
+// };
 
-const NewProductWithHookForm = (props: NewProductProps) => {
+const NewProductWithHookForm = () => {
   const {
     register,
     handleSubmit,
@@ -30,7 +30,6 @@ const NewProductWithHookForm = (props: NewProductProps) => {
                 imageUrl,
                 description,
               );
-              props.AddANewProduct(newProduct);
             },
           )}
         >

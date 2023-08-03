@@ -31,6 +31,15 @@ const Header = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/dashboard/newproduct"
+              >
+                New Product
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" to="/dashboard/posts">
                 Posts
               </Link>

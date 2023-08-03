@@ -8,6 +8,7 @@ import { BrowserRouter, Link, Navigate, Route, Routes } from "react-router-dom";
 import Header from "../header/header.component";
 import Dashboard from "../dashboard/dashboard.component";
 import ProductDetails from "../productdetails/product.details";
+import NewProductWithHookForm from "../newproduct/newProduct.reacthookform";
 
 let App: React.FC = () => {
   return (
@@ -19,6 +20,8 @@ let App: React.FC = () => {
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<ListOfProducts />} />
             <Route path="productdetails/:id" element={<ProductDetails />} />
+            <Route path="newproduct" element={<NewProductWithHookForm />} />
+
             <Route path="posts" element={<Posts />} />
             <Route path="getproductbyid" element={<GetProductById />} />
           </Route>
