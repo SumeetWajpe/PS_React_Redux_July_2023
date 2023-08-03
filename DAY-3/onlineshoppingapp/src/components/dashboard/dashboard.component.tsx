@@ -1,12 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Header from "../header/header.component";
 
 const Dashboard = () => {
   return (
     <div>
-      <header>
-        <h1>Dashboard</h1>
-      </header>
+      <Header />
       <main>
         <Outlet></Outlet>
       </main>

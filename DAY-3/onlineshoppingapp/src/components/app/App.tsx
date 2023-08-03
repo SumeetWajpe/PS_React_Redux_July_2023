@@ -14,7 +14,6 @@ let App: React.FC = () => {
       <BrowserRouter>
         {/* <a href="/">Products</a> | <a href="/posts">Posts</a> */}
         {/* <Link to="/">Products</Link> | <Link to="/posts"> Posts </Link> */}
-        <Header />
         <Routes>
           <Route path="/dashboard" element={<Dashboard />}>
             <Route index element={<ListOfProducts />} />

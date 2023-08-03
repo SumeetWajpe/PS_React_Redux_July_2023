@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <Link className="navbar-brand" to="/dashboard">
           Online Shopping
         </Link>
         <button
@@ -22,17 +22,21 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/">
+              <Link
+                className="nav-link active"
+                aria-current="page"
+                to="/dashboard"
+              >
                 Products
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/posts">
+              <Link className="nav-link" to="/dashboard/posts">
                 Posts
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/getproductbyid">
+              <Link className="nav-link" to="/dashboard/getproductbyid">
                 Get Product By Id
               </Link>
             </li>
