@@ -16,13 +16,17 @@ const Posts: React.FC = () => {
         <h1>List Of Posts</h1>
       </header>
       <main>
-        <ul className="list-group">
-          {posts?.map(post => (
-            <li key={post.id} className="list-group-item">
-              {post.title}
-            </li>
-          ))}
-        </ul>
+        {posts?.length ? (
+          <ul className="list-group">
+            {posts?.map(post => (
+              <li key={post.id} className="list-group-item">
+                {post.title}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          "Loading.."
+        )}
       </main>
     </div>
   );
