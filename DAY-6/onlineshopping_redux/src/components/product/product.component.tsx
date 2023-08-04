@@ -2,7 +2,10 @@ import { useState } from "react";
 import { ProductModel } from "../../models/product.model";
 import Rating from "../rating/rating.component";
 import { useDispatch } from "react-redux";
-import { incrementLikes } from "../../redux/slices/products.slices";
+import {
+  deleteProduct,
+  incrementLikes,
+} from "../../redux/slices/products.slices";
 // import { Link } from "react-router-dom";
 
 type ProductProps = {
@@ -43,7 +46,10 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
             <i className="fa-regular fa-thumbs-up"></i>
           </button>
 
-          <button className="btn btn-outline-danger mx-1">
+          <button
+            className="btn btn-outline-danger mx-1"
+            onClick={() => dispatch(deleteProduct(props.productdetails.id))}
+          >
             <i className="fa-solid fa-trash"></i>
           </button>
         </div>

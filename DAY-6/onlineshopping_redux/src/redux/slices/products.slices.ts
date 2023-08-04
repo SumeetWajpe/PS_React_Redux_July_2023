@@ -69,8 +69,12 @@ let productSlice = createSlice({
       store[index].likes++; // updated store [Immer]
       return store;
     },
+    deleteProduct: (store: ProductModel[], action: PayloadAction<number>) => {
+      store = store.filter(p => p.id !== action.payload);
+      return store;
+    },
   },
 });
 
-export let { incrementLikes } = productSlice.actions; // action creators
+export let { incrementLikes, deleteProduct } = productSlice.actions; // action creators
 export default productSlice.reducer;
