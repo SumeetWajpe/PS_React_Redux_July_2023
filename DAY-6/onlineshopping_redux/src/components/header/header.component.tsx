@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CartCount from "../cart/cartcount/cartcount.component";
 
 const Header = () => {
   return (
@@ -51,6 +52,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
+        <CartCount />
       </div>
     </nav>
   );

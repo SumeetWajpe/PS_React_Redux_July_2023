@@ -7,6 +7,10 @@ import {
   incrementLikes,
 } from "../../redux/slices/products.slices";
 import { Link } from "react-router-dom";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "../../redux/slices/cart.slice";
 // import { Link } from "react-router-dom";
 
 type ProductProps = {
@@ -39,20 +43,35 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
           </p>
 
           <p className="card-text">₹.{props.productdetails.price}</p>
-          <button
-            className="btn btn-outline-primary"
-            onClick={() => dispatch(incrementLikes(props.productdetails.id))}
-          >
-            {props.productdetails.likes}{" "}
-            <i className="fa-regular fa-thumbs-up"></i>
-          </button>
+          <div className="d-flex">
+            <button
+              className="btn btn-outline-primary"
+              onClick={() => dispatch(incrementLikes(props.productdetails.id))}
+            >
+              {props.productdetails.likes}{" "}
+              <i className="fa-regular fa-thumbs-up"></i>
+            </button>
 
-          <button
-            className="btn btn-outline-danger mx-1"
-            onClick={() => dispatch(deleteProduct(props.productdetails.id))}
-          >
-            <i className="fa-solid fa-trash"></i>
-          </button>
+            <button
+              className="btn btn-outline-danger mx-1"
+              onClick={() => dispatch(deleteProduct(props.productdetails.id))}
+            >
+              <i className="fa-solid fa-trash"></i>
+            </button>
+            <div className="d-flex align-items-center">
+              <input
+                type="checkbox"
+                id="chkAddItemToCart"
+                className="form-check-input"
+                onChange={e => {
+                  e.target.checked
+                    ? dispatch(addProductToCart(props.productdetails))
+                    : dispatch(removeProductFromCart(props.productdetails.id));
+                }}
+              />{" "}
+              <label htmlFor="chkAddItemToCart">Add to Cart</label>
+            </div>
+          </div>
         </div>
       </div>
     </div>

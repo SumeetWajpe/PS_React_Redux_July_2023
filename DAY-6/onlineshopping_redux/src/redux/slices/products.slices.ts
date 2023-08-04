@@ -84,5 +84,6 @@ let productSlice = createSlice({
   },
 });
 
-export let { incrementLikes, deleteProduct,addNewProduct } = productSlice.actions; // action creators
+export let { incrementLikes, deleteProduct, addNewProduct } =
+  productSlice.actions; // action creators
 export default productSlice.reducer;
