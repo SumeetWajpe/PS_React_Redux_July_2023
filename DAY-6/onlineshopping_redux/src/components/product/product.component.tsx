@@ -6,6 +6,7 @@ import {
   deleteProduct,
   incrementLikes,
 } from "../../redux/slices/products.slices";
+import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
 type ProductProps = {
@@ -17,15 +18,15 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
   return (
     <div className="col-md-3 my-1">
       <div className="card">
-        {/* <Link to={`/dashboard/productdetails/${props.productdetails.id}`}> */}
-        <img
-          src={props.productdetails.imageUrl}
-          className="card-img-top"
-          alt={props.productdetails.title}
-          height="150px"
-          width="200px"
-        />
-        {/* </Link> */}
+        <Link to={`/dashboard/productdetails/${props.productdetails.id}`}>
+          <img
+            src={props.productdetails.imageUrl}
+            className="card-img-top"
+            alt={props.productdetails.title}
+            height="150px"
+            width="200px"
+          />
+        </Link>
 
         <div className="card-body">
           <h5 className="card-title">{props.productdetails.title}</h5>
