@@ -73,8 +73,16 @@ let productSlice = createSlice({
       store = store.filter(p => p.id !== action.payload);
       return store;
     },
+    addNewProduct: (
+      store: ProductModel[],
+      action: PayloadAction<ProductModel>,
+    ) => {
+      let productToBeAdded = action.payload;
+      store.push(productToBeAdded);
+      return store;
+    },
   },
 });
 
-export let { incrementLikes, deleteProduct } = productSlice.actions; // action creators
+export let { incrementLikes, deleteProduct,addNewProduct } = productSlice.actions; // action creators
 export default productSlice.reducer;
