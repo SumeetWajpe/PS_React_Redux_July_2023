@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ProductModel } from "../../models/product.model";
 
 let initialState: ProductModel[] = [
@@ -62,13 +62,15 @@ let productSlice = createSlice({
   initialState,
   name: "products",
   reducers: {
-    incrementLikes: (store, action) => {
+    incrementLikes: (store: ProductModel[], action: PayloadAction<number>) => {
       console.log("Within incrementLikes");
-      console.log(action);
-      return store; // updated store
+
+      let index = store.findIndex(p => p.id == action.payload);
+      store[index].likes++; // updated store [Immer]
+      return store;
     },
   },
 });
 
-export let { incrementLikes } = productSlice.actions;
+export let { incrementLikes } = productSlice.actions; // action creators
 export default productSlice.reducer;
