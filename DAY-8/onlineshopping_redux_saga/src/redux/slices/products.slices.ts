@@ -1,4 +1,4 @@
-import { PayloadAction,  createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ProductModel } from "../../models/product.model";
 
 let initialState: ProductModel[] = [];
@@ -26,9 +26,16 @@ let productSlice = createSlice({
       store.push(productToBeAdded);
       return store;
     },
+    setAllProducts: (
+      store: ProductModel[],
+      action: PayloadAction<ProductModel[]>,
+    ) => {
+      store = action.payload; 
+      return store;
+    },
   },
 });
 
-export let { incrementLikes, deleteProduct, addNewProduct } =
+export let { incrementLikes, deleteProduct, addNewProduct, setAllProducts } =
   productSlice.actions; // action creators
 export default productSlice.reducer;

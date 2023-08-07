@@ -11,7 +11,7 @@ const store = configureStore({
   reducer: { products, posts, carts },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(middleware),
 });
-sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga); // registers the root Saga with Store
 export default store;
 export type AppState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

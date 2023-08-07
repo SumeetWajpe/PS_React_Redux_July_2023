@@ -1,7 +1,8 @@
-import { call, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import { SagaActions } from "./sagaactions";
 import axios from "axios";
 import { ProductModel } from "../models/product.model";
+import { setAllProducts } from "../redux/slices/products.slices";
 
 type AxiosResponse = {
   data: ProductModel[];
@@ -18,7 +19,8 @@ function getProducts() {
 
 function* fetchProductsAsync() {
   let response: AxiosResponse = yield call(getProducts);
-  console.log(response.data);
+  //   console.log(response.data);
+  yield put(setAllProducts(response.data)); // dispatching the action to reducer
 }
 
 export function* rootSaga() {
