@@ -2,7 +2,11 @@ import { call, put, retry, takeLatest } from "redux-saga/effects";
 import { SagaActions } from "./sagaactions";
 import axios from "axios";
 import { ProductModel } from "../models/product.model";
-import { deleteProduct, setAllProducts } from "../redux/slices/products.slices";
+import {
+  deleteProduct,
+  handleError,
+  setAllProducts,
+} from "../redux/slices/products.slices";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 type AxiosResponse = {
@@ -43,12 +47,16 @@ function deleteProductFromServer(id: number) {
 }
 
 function* deleteProductAsync(action: PayloadAction<number>) {
-  let response: AxiosResponse = yield call(
-    deleteProductFromServer,
-    action.payload,
-  );
-  if (response.status == 200) {
-    yield put(deleteProduct(action.payload));
+  try {
+    let response: AxiosResponse = yield call(
+      deleteProductFromServer,
+      action.payload,
+    );
+    if (response.status == 200) {
+      yield put(deleteProduct(action.payload));
+    }
+  } catch (error) {
+    yield put(handleError("Something went wrong !")); // diaptch an action for error
   }
 }
 

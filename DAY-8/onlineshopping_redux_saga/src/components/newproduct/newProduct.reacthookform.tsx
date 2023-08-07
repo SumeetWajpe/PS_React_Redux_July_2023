@@ -26,8 +26,27 @@ const NewProductWithHookForm = () => {
         <form
           onSubmit={handleSubmit(
             ({ id, title, price, rating, imageUrl, description, likes }) => {
+              // (() => {
+              //   return Promise.resolve(
+              //     dispatch(
+              //       addNewProduct({
+              //         // can be saga action
+              //         id,
+              //         title,
+              //         price,
+              //         rating,
+              //         imageUrl,
+              //         description,
+              //         likes,
+              //       }),
+              //     ),
+              //   );
+              // })().then(() => {
+              //   navigate("/dashboard");
+              // });
               dispatch(
                 addNewProduct({
+                  // can be saga action
                   id,
                   title,
                   price,
@@ -37,8 +56,6 @@ const NewProductWithHookForm = () => {
                   likes,
                 }),
               );
-
-              // dispatch(addNewProduct(newProduct));
               navigate("/dashboard");
             },
           )}

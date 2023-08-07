@@ -30,12 +30,22 @@ let productSlice = createSlice({
       store: ProductModel[],
       action: PayloadAction<ProductModel[]>,
     ) => {
-      store = action.payload; 
+      store = action.payload;
       return store;
+    },
+    handleError: (store: ProductModel[], action: PayloadAction<string>) => {
+      // store.error = action.payload
+      // store.products = [];
+      // store.loading = false;
     },
   },
 });
 
-export let { incrementLikes, deleteProduct, addNewProduct, setAllProducts } =
-  productSlice.actions; // action creators
+export let {
+  incrementLikes,
+  deleteProduct,
+  addNewProduct,
+  setAllProducts,
+  handleError,
+} = productSlice.actions; // action creators
 export default productSlice.reducer;
