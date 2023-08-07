@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { call, put, retry, takeLatest } from "redux-saga/effects";
 import { SagaActions } from "./sagaactions";
 import axios from "axios";
 import { ProductModel } from "../models/product.model";
@@ -23,6 +23,21 @@ function* fetchProductsAsync() {
   yield put(setAllProducts(response.data)); // dispatching the action to reducer
 }
 
+function* retryFetchProductsSaga() {
+  try {
+    const SECOND = 1000;
+    const response: AxiosResponse = yield retry(
+      3,
+      10 * SECOND,
+      fetchProductsAsync,
+    );
+    yield put(setAllProducts(response.data));
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export function* rootSaga() {
-  yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, fetchProductsAsync);
+  //yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, fetchProductsAsync);
+  yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, retryFetchProductsSaga);
 }
