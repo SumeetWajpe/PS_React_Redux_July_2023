@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      var cars = ["BMW", "AUDI", "MERC"];
+
+      //   for (const car of cars) {
+      //     console.log(car);
+      //   }
+
+      let iterator = cars[Symbol.iterator]();
+      console.log(iterator.next());
+      console.log(iterator.next());
+      console.log(iterator.next());
+      console.log(iterator.next());
+
+    </script>
+  </head>
+  <body></body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // Generators are functions that return an iterator
+      function* Test() {
+        console.log("Within Test !");
+        yield 10; // suspended the execution of the function & partially returned
+        console.log("After yield !");
+        yield 20;
+        return 30;
+      }
+
+      let itr = Test();
+      console.log(itr.next().value);
+      console.log("back in the flow !");
+    //   console.log(itr.next().value);
+    //   console.log(itr.next());
+    </script>
+  </head>
+  <body></body>
+</html>
