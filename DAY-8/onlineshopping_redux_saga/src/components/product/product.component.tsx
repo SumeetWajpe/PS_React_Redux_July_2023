@@ -11,6 +11,7 @@ import {
   addProductToCart,
   removeProductFromCart,
 } from "../../redux/slices/cart.slice";
+import { SagaActions } from "../../saga/sagaactions";
 // import { Link } from "react-router-dom";
 
 type ProductProps = {
@@ -54,7 +55,12 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
 
             <button
               className="btn btn-outline-danger mx-1"
-              onClick={() => dispatch(deleteProduct(props.productdetails.id))}
+              onClick={() =>
+                dispatch({
+                  type: SagaActions.DELETE_PRODUCT_ASYNC,
+                  payload: props.productdetails.id,
+                })
+              }
             >
               <i className="fa-solid fa-trash"></i>
             </button>

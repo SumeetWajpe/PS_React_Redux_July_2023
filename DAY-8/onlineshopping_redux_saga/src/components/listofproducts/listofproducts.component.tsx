@@ -12,20 +12,22 @@ let ListOfProducts: React.FC = () => {
 
   let dispatch = useDispatch<AppDispatch>();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch({ type: SagaActions.FETCH_PRODUCTS_ASYNC });
+  }, []);
   return (
     <>
       <header>
         <h1>List Of Products</h1>
       </header>
-      <button
+      {/* <button
         className="btn btn-primary"
         onClick={() => {
-          dispatch({ type: SagaActions.FETCH_PRODUCTS_ASYNC });
+        //  dispatch({ type: SagaActions.FETCH_PRODUCTS_ASYNC });
         }}
       >
         Get Products
-      </button>
+      </button> */}
       <main className="row">
         {products?.map(product => (
           <Product productdetails={product} key={product.id} />

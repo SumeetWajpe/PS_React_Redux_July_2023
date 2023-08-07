@@ -2,7 +2,8 @@ import { call, put, retry, takeLatest } from "redux-saga/effects";
 import { SagaActions } from "./sagaactions";
 import axios from "axios";
 import { ProductModel } from "../models/product.model";
-import { setAllProducts } from "../redux/slices/products.slices";
+import { deleteProduct, setAllProducts } from "../redux/slices/products.slices";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 type AxiosResponse = {
   data: ProductModel[];
@@ -37,7 +38,22 @@ function* retryFetchProductsSaga() {
   }
 }
 
+function deleteProductFromServer(id: number) {
+  return axios.delete("http://localhost:3500/products/" + id);
+}
+
+function* deleteProductAsync(action: PayloadAction<number>) {
+  let response: AxiosResponse = yield call(
+    deleteProductFromServer,
+    action.payload,
+  );
+  if (response.status == 200) {
+    yield put(deleteProduct(action.payload));
+  }
+}
+
 export function* rootSaga() {
-  // yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, fetchProductsAsync);
-  yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, retryFetchProductsSaga);
+  yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, fetchProductsAsync);
+  // yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, retryFetchProductsSaga);
+  yield takeLatest(SagaActions.DELETE_PRODUCT_ASYNC, deleteProductAsync);
 }
