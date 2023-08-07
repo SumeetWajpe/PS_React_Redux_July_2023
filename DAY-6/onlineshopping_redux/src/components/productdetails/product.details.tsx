@@ -10,7 +10,7 @@ const ProductDetails: React.FC = () => {
   const { id = "0" } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const products = useSelector((store: AppState) => store.products);
+  const products = useSelector((store: AppState) => store.products.products);
   const theProduct = products?.find(p => p.id == parseInt(id));
   return (
     <div>

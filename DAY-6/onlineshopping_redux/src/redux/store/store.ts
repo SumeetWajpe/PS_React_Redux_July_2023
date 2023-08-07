@@ -7,9 +7,9 @@ const store = configureStore({
 });
 export default store;
 export type AppState = ReturnType<typeof store.getState>;
-
-let city = "Pune";
-let companyName = "IBM";
+export type AppDispatch = typeof store.dispatch;
+// let city = "Pune";
+// let companyName = "IBM";
 
 // let company = { companyName: companyName, city: city };
 //let company = { companyName, city }; // Enhanced Object Literal syntax
