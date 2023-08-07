@@ -18,19 +18,19 @@ function getProducts() {
 }
 
 function* fetchProductsAsync() {
-  let response: AxiosResponse = yield call(getProducts);
-  //   console.log(response.data);
-  yield put(setAllProducts(response.data)); // dispatching the action to reducer
+  try {
+    let response: AxiosResponse = yield call(getProducts);
+    //   console.log(response.data);
+    yield put(setAllProducts(response.data)); // dispatching the action to reducer
+  } catch (error) {
+    console.log("Failed !");
+  }
 }
 
 function* retryFetchProductsSaga() {
   try {
     const SECOND = 1000;
-    const response: AxiosResponse = yield retry(
-      3,
-      10 * SECOND,
-      fetchProductsAsync,
-    );
+    const response: AxiosResponse = yield retry(3, 10 * SECOND, getProducts);
     yield put(setAllProducts(response.data));
   } catch (error) {
     console.log(error);
@@ -38,6 +38,6 @@ function* retryFetchProductsSaga() {
 }
 
 export function* rootSaga() {
-  //yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, fetchProductsAsync);
+  // yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, fetchProductsAsync);
   yield takeLatest(SagaActions.FETCH_PRODUCTS_ASYNC, retryFetchProductsSaga);
 }
