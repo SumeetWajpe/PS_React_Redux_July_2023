@@ -6,7 +6,7 @@ import { AppDispatch, AppState } from "../../redux/store/store";
 import { fetchProductsAsync } from "../../redux/slices/products.slices";
 
 let ListOfProducts: React.FC = () => {
-  const { products, loading } = useSelector(
+  const { products, loading, error } = useSelector(
     (store: AppState) => store.products,
   );
 
@@ -15,6 +15,7 @@ let ListOfProducts: React.FC = () => {
   useEffect(() => {
     dispatch(fetchProductsAsync());
   }, []);
+  if (error) return <h1 className="text-danger"> Something went wrong !</h1>;
   return (
     <>
       <header>

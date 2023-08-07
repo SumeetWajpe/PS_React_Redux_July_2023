@@ -15,15 +15,17 @@ let initialState: ProductRequest = {
 
 export const fetchProductsAsync = createAsyncThunk(
   "products/fetchProductsAsync",
-  async () => {
+  async (_, { rejectWithValue }) => {
     try {
-      let res = await fetch("http://localhost:3500/products");
+      let res = await fetch("http://localhost:3500/productss");
       if (res.ok) {
         return res.json();
       } else {
         throw new Error("Something went wrong !");
       }
-    } catch (error) {}
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
   },
 );
 
@@ -52,18 +54,33 @@ let productSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(fetchProductsAsync.fulfilled, (store:ProductRequest, { payload }) => {
-      console.log(payload);
-      store.products = payload;
-      store.loading = false;
-      return store;
-    });
-    builder.addCase(fetchProductsAsync.pending, (store:ProductRequest, { payload }) => {
-      console.log(payload);
-      store.products = [];
-      store.loading = true;
-      return store;
-    });
+    builder.addCase(
+      fetchProductsAsync.fulfilled,
+      (store: ProductRequest, { payload }) => {
+        console.log(payload);
+        store.products = payload;
+        store.loading = false;
+        return store;
+      },
+    );
+    builder.addCase(
+      fetchProductsAsync.pending,
+      (store: ProductRequest, { payload }) => {
+        console.log(payload);
+        store.products = [];
+        store.loading = true;
+        return store;
+      },
+    );
+    builder.addCase(
+      fetchProductsAsync.rejected,
+      (store: ProductRequest, { payload }) => {
+        store.products = [];
+        store.loading = false;
+        store.error = payload as string;
+        return store;
+      },
+    );
   },
 });
 
