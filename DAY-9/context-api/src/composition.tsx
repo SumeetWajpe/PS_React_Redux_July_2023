@@ -13,3 +13,16 @@ const Button = (props: PropsWithChildren<ButtonProps>) => {
 };
 
 export default Button;
+
+
+// <CartSummary>
+//     <CartItem>
+//         <CartImage></CartImage>
+//         <CartDetails>
+//            <Title>
+//             <h3>ksjdfbdjsbf</h3>
+//            </Title>
+//             <Rating/>
+//         </CartDetails>
+//     </CartItem>
+// </CartSummary>

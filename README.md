@@ -5,3 +5,14 @@
 https://atomicdesign.bradfrost.com/chapter-2/
 
 https://github.com/danilowoz/react-atomic-design
+
+
+
+# Commands
+# Unit Testing Installing Enzyme
+
+npm i --save-dev enzyme enzyme-adapter-react-16 --force
+
+npm i @types/enzyme --force
+
+npm i @types/enzyme-adapter-react-16  --force
