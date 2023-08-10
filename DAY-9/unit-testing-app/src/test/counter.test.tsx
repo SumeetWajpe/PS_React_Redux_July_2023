@@ -11,5 +11,14 @@ describe("tests for Counter Component", () => {
   });
   it("tests for initial value of state to be zero", () => {
     // A A A -> Arrange -> Act -> Assert
+
+    // Arrange
+    let ctrInstance = shallow(<Counter />);
+
+    // Act
+    let innerText = ctrInstance.find("p").text();
+
+    // Assert
+    expect(innerText).toEqual("Count : 0");
   });
 });
