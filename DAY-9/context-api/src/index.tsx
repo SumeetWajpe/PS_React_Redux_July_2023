@@ -3,11 +3,26 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { GrandParent } from "./App";
+import Product from "./composition";
+import Button from "./composition";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
 );
-root.render(<GrandParent />);
+// root.render(<GrandParent />);
+
+let UI = (
+  <>
+    <Button>Hello !</Button>
+    <Button>
+      <i className="fa-solid fa-thumbs-up"></i>
+    </Button>
+    <Button>
+      <i className="fa-solid fa-thumbs-up"></i> 200
+    </Button>
+  </>
+);
+root.render(UI);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
