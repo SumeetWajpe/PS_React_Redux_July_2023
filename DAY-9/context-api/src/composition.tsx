@@ -1,6 +1,10 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
-const Button = (props: any) => {
+type ButtonProps = {
+  classes?: string;
+};
+
+const Button = (props: PropsWithChildren<ButtonProps>) => {
   return (
     <>
       <button className={props.classes}>{props.children}</button>

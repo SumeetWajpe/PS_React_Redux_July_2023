@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import { GrandParent } from "./App";
 import Product from "./composition";
 import Button from "./composition";
+import BasicExample from "./react-bootstrap";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -14,7 +15,7 @@ const root = ReactDOM.createRoot(
 let UI = (
   <>
     <Button classes="btn btn-primary">Hello !</Button>
-    <Button>
+    <Button classes="btn btn-outline-danger">
       <i className="fa-solid fa-thumbs-up"></i>
     </Button>
     <Button>
@@ -22,6 +23,7 @@ let UI = (
     </Button>
   </>
 );
+// root.render(<BasicExample />);
 root.render(UI);
 
 // If you want to start measuring performance in your app, pass a function
