@@ -4,7 +4,7 @@ import "./App.css";
 
 type ContextDataType = {
   count: number;
-  increment: () => void;
+  increment: (incrementBy: number) => void;
 };
 
 const CounterContext = React.createContext<ContextDataType>({
@@ -17,7 +17,10 @@ export function GrandParent() {
   return (
     <>
       <CounterContext.Provider
-        value={{ count, increment: () => setCount(count + 1) }}
+        value={{
+          count,
+          increment: (incrementBy: number) => setCount(count + incrementBy),
+        }}
       >
         <Parent />
       </CounterContext.Provider>
@@ -26,21 +29,29 @@ export function GrandParent() {
 }
 
 function Parent() {
+  const [count, setCount] = useState(1000);
+
   return (
     <>
-      <Child />
-      <hr />
-      <AnotherChild />
+      <CounterContext.Provider
+        value={{
+          count,
+          increment: (incrementBy: number) => setCount(count + incrementBy),
+        }}
+      >
+        <Child />
+        <hr />
+        <AnotherChild />
+      </CounterContext.Provider>
     </>
   );
 }
-
 function Child() {
-  let ctx = useContext(CounterContext); // hook (consumer)
+  let ctx = useContext(CounterContext); // hook (consumer) looks out for nearest provider
   return (
     <>
       <p>(Child)Count : {ctx.count}</p>
-      <button onClick={() => ctx.increment()}>++</button>
+      <button onClick={() => ctx.increment(2)}>++</button>
     </>
   );
 }
@@ -51,6 +62,7 @@ function AnotherChild() {
       {ctx => (
         <>
           <p>(AnotherChild)Count : {ctx.count}</p>
+          <button onClick={() => ctx.increment(4)}>++</button>
         </>
       )}
     </CounterContext.Consumer>
