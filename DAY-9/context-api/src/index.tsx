@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
 
 let UI = (
   <>
-    <Button>Hello !</Button>
+    <Button classes="btn btn-primary">Hello !</Button>
     <Button>
       <i className="fa-solid fa-thumbs-up"></i>
     </Button>
