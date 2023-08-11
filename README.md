@@ -16,3 +16,8 @@ npm i --save-dev enzyme enzyme-adapter-react-16 --force
 npm i @types/enzyme --force
 
 npm i @types/enzyme-adapter-react-16  --force
+
+# Snapshot Testing
+npm i react-test-renderer --force
+
+npm i @types/react-test-renderer --force
