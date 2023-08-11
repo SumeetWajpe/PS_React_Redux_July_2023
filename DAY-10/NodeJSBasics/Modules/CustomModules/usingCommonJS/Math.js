@@ -6,4 +6,4 @@ function Product(x, y) {
   return x * y;
 }
 
-module.exports.Add = Add;
+module.exports = { Addition: Add, Product };
