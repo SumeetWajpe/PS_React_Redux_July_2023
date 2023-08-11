@@ -28,6 +28,15 @@ const server = http.createServer((req, res) => {
         res.end(data);
       }
     });
+  } else if (req.url == "/products") {
+    let products = [
+      { id: 1, title: "Macbook" },
+      { id: 2, title: "Shoes" },
+    ];
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/json");
+
+    res.end(JSON.stringify(products));
   } else {
     res.statusCode = 404;
     res.end("Resource Not Found !");
