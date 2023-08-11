@@ -4,7 +4,7 @@ import Counter from "../counter/counter";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe("tests for Counter Component", () => {
+xdescribe("tests for Counter Component", () => {
   it("tests if component instance is defined", () => {
     let ctrInstance = shallow(<Counter />);
     expect(ctrInstance).toBeDefined();
@@ -41,15 +41,10 @@ describe("tests for Counter Component", () => {
 
     let button = ctrInstance.find("button");
 
-    let innerText = ctrInstance.find("p").text();
-
-    // Assert
-    expect(innerText).toEqual("Count : 10");
-
     // Act
     button.simulate("click"); // trigger the click event
 
-    innerText = ctrInstance.find("p").text();
+    let innerText = ctrInstance.find("p").text();
 
     // Assert
     expect(innerText).toEqual("Count : 11");

@@ -6,6 +6,7 @@ import { GrandParent } from "./App";
 import Product from "./composition";
 import Button from "./composition";
 import BasicExample from "./react-bootstrap";
+import { MyMessage } from "./memo";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement,
@@ -24,7 +25,14 @@ let UI = (
   </>
 );
 // root.render(<BasicExample />);
-root.render(UI);
+// root.render(UI);
+root.render(
+  <>
+    <MyMessage msg="Hello" />
+    <MyMessage msg="Hello" />
+    <MyMessage msg="Hey" />
+  </>,
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
