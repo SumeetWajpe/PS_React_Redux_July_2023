@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const users = [{ name: "jim" }, { name: "kim" }];
+const users = [{ name: "jim" }, { name: "kim" }]; // database
 router.get("/", (req, res) => {
   res.json({ users });
 });
 router.get("/:name", (req, res) => {
   let name = req.params.name; // get the value from url
-  let user = users.find(u => u.name == name);
+  let user = users.find(u => u.name == name); // find the user from db !
   res.json(user);
 });
 
