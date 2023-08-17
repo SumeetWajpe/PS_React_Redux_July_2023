@@ -7,6 +7,17 @@ const express_1 = __importDefault(require("express"));
 const router = express_1.default.Router();
 const products_model_1 = require("../models/products.model");
 router.get("/", (req, res) => {
-    res.json(products_model_1.products);
+    res.json(products_model_1.data.products);
+});
+router.post("/newproduct", (req, res) => {
+    const { id, title, price, rating, imageUrl, likes, description } = req.body;
+    const newProduct = new products_model_1.ProductModel(id, title, price, rating, likes, imageUrl, description);
+    products_model_1.data.products.push(newProduct);
+    res.json({ msg: "Product added successfully !" });
+});
+router.delete("/delete/:id", (req, res) => {
+    const id = +req.params.id;
+    products_model_1.data.products = products_model_1.data.products.filter((p) => p.id !== id);
+    res.json({ msg: "Product deleted successfully !", success: true });
 });
 exports.default = router;
