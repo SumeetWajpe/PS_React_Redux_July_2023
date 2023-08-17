@@ -1,8 +1,12 @@
 const express = require("express");
+const path = require("path");
 // OR
 // import express from "express";
 const app = express();
 const port = 3000;
+
+// middleware
+app.use(express.static(path.join("static")));
 
 app.get("/", (req, res) => {
   //   res.send("Hello World!");
@@ -10,12 +14,6 @@ app.get("/", (req, res) => {
   res.sendFile("Index.html", { root: __dirname });
 });
 
-app.get("/styles.css", (req, res) => {
-  res.sendFile("styles.css", { root: __dirname });
-});
-app.get("/script.js", (req, res) => {
-  res.sendFile("script.js", { root: __dirname });
-});
 app.get("/products", (req, res) => {
   let products = [
     { id: 1, title: "Macbook" },
