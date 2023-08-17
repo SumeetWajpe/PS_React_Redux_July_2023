@@ -1,6 +1,9 @@
 # PS_React_Redux_July_2023
 
-#Important Links
+# Github link
+https://github.com/SumeetWajpe/PS_React_Redux_July_2023
+
+# Important Links
 
 https://atomicdesign.bradfrost.com/chapter-2/
 
