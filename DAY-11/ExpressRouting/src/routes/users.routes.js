@@ -1,8 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const users = [{ name: "Jim" }, { name: "Kim" }];
+const users = [{ name: "jim" }, { name: "kim" }];
 router.get("/", (req, res) => {
   res.json({ users });
+});
+router.get("/:name", (req, res) => {
+  let name = req.params.name; // get the value from url
+  let user = users.find(u => u.name == name);
+  res.json(user);
 });
 
 router.post("/newuser", (req, res) => {
