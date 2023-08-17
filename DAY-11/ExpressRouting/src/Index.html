@@ -4,23 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script>
-      function Loadusers() {
-        fetch("http://localhost:3000/users")
-          .then(res => res.json())
-          .then(users => {
-            let userList = document.querySelector("#listofusers");
-
-            for (const user of users.users) {
-              let newLi = document.createElement("li");
-              newLi.innerText = user.name;
-              userList.append(newLi);
-            }
-          });
-      }
-    </script>
+    <script src="script.js"></script>
   </head>
-  <body onload="Loadusers()">
+  <body >
     <ul id="listofusers"></ul>
   </body>
 </html>

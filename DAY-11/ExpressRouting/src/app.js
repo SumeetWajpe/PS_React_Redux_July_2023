@@ -1,10 +1,12 @@
 const express = require("express");
+const path = require("path");
 const productsRouter = require("./routes/products.routes");
 const usersRouter = require("./routes/users.routes");
 const app = express();
 const port = 3000;
 
 app.use(express.json());
+app.use(express.static(path.join("src/public")));
 app.use("/products", productsRouter);
 app.use("/users", usersRouter);
 
