@@ -24,3 +24,7 @@ npm i @types/enzyme-adapter-react-16  --force
 npm i react-test-renderer --force
 
 npm i @types/react-test-renderer --force
+
+# Express Generator
+
+npx express-generator usingpug --view="pug"
