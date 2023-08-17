@@ -9,4 +9,5 @@ router.get("/", (req, res) => {
   res.json(products);
 });
 
+
 module.exports = router;
