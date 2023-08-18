@@ -6,13 +6,23 @@
     <title>Document</title>
     <script src="/socket.io/socket.io.js"></script>
     <script>
+      let socket = null;
       function Initialize() {
-        let socket = io.connect(); // raising/emit the connection event
+        socket = io.connect(); // raising/emit the connection event
         socket.on("custom_msg_from_server_peer", dataFromServer => {
           console.log(dataFromServer);
         });
       }
+
+      function SendMessage() {
+        let msg = document.querySelector("#txtMessage").value;
+        socket.emit("custom_msg_from_client_peer", msg);
+      }
     </script>
   </head>
-  <body onload="Initialize()"></body>
+  <body onload="Initialize()">
+    <label for="txtMessage">Message :</label>
+    <input type="text" id="txtMessage" />
+    <button onclick="SendMessage()">Send</button>
+  </body>
 </html>
