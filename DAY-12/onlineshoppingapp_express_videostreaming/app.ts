@@ -1,9 +1,18 @@
 import express, { Request, Response } from "express";
 import productsRouter from "./routes/products.routes";
+import mongoose from "mongoose";
+
 import path from "path";
 import cors from "cors";
-
+import dotenv from "dotenv";
 var app = express();
+dotenv.config();
+
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING || "", {});
+mongoose.connection.on("open", () => {
+  console.log("OnlineshoppingDB connected successfully ");
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

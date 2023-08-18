@@ -1,28 +1,59 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const products_model_1 = require("../models/products.model");
+const products_model_1 = __importDefault(require("../models/products.model"));
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const router = express_1.default.Router();
-router.get("/", (req, res) => {
-    res.json(products_model_1.data.products);
-});
-router.post("/newproduct", (req, res) => {
-    const { id, title, price, rating, imageUrl, likes, description } = req.body;
-    const newProduct = new products_model_1.ProductModel(id, title, price, rating, likes, imageUrl, description);
-    products_model_1.data.products.push(newProduct);
-    res.json({ msg: "Product added successfully !" });
-});
-router.delete("/delete/:id", (req, res) => {
-    const id = +req.params.id;
-    products_model_1.data.products = products_model_1.data.products.filter((p) => p.id !== id);
-    res.json({ msg: "Product deleted successfully !", success: true });
-});
-router.get("/video/:id", (req, res) => {
+router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let listofproductfromDB = yield products_model_1.default.find({});
+        res.json(listofproductfromDB);
+    }
+    catch (error) {
+        res.status(500).json({ msg: "Something went wrong !" });
+    }
+}));
+router.post("/newproduct", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const newProductFromRequest = req.body;
+        const newProduct = new products_model_1.default(Object.assign({}, newProductFromRequest));
+        yield newProduct.save();
+        res.status(201).json({ msg: "Product added successfully !" });
+    }
+    catch (error) {
+        res.status(500).json({ msg: "Something went wrong !" });
+    }
+}));
+router.delete("/delete/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        let productId = parseInt(req.params.id);
+        let result = yield products_model_1.default.deleteOne({ id: productId });
+        if (result.acknowledged && result.deletedCount) {
+            res.json({ msg: "Product Deleted successfully !" });
+        }
+        else {
+            throw new Error("Something went wrong !");
+        }
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({ msg: error === null || error === void 0 ? void 0 : error.message });
+    }
+}));
+router.get("/video/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     // status code - 200 success | 201 creation | 206 success (partial content)
     // range header
     // 1st request (range bytes=0-)
@@ -30,8 +61,8 @@ router.get("/video/:id", (req, res) => {
     try {
         // get the id
         const productId = +req.params.id || 0;
-        const product = products_model_1.data.products.find(p => p.id == productId) || new products_model_1.ProductModel(); // can come from DB !
-        const videoUrl = product.videoUrl;
+        const product = yield products_model_1.default.findOne({ id: productId }); // can come from DB !
+        const videoUrl = (product === null || product === void 0 ? void 0 : product.videoUrl) || "";
         let videoPath = path_1.default.resolve(videoUrl);
         const videoSize = fs_1.default.statSync(videoPath).size;
         // console.log(videoSize);
@@ -52,5 +83,5 @@ router.get("/video/:id", (req, res) => {
         videoStream.pipe(res);
     }
     catch (error) { }
-});
+}));
 exports.default = router;

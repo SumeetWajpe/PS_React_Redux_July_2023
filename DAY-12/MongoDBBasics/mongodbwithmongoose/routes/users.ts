@@ -10,7 +10,7 @@ router.get("/", async function (req, res, next) {
 router.post("/newuser", async function (req, res, next) {
   let { name, age } = req.body;
   let newUser = new User({ name, age });
-  await newUser.save(); // inserts the new user
+  await newUser.save(); // inserts the new user in the db
   res.json({ msg: "user addedd successfully !" });
 });
 

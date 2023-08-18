@@ -1,36 +1,47 @@
 import express, { Request, Response } from "express";
-import { ProductModel, data } from "../models/products.model";
+import products from "../models/products.model";
 import path from "path";
 import fs from "fs";
 
 const router = express.Router();
 
-router.get("/", (req: Request, res: Response) => {
-  res.json(data.products);
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    let listofproductfromDB = await products.find({});
+    res.json(listofproductfromDB);
+  } catch (error) {
+    res.status(500).json({ msg: "Something went wrong !" });
+  }
 });
 
-router.post("/newproduct", (req: Request, res: Response) => {
-  const { id, title, price, rating, imageUrl, likes, description } = req.body;
-  const newProduct: ProductModel = new ProductModel(
-    id,
-    title,
-    price,
-    rating,
-    likes,
-    imageUrl,
-    description,
-  );
-  data.products.push(newProduct);
-  res.json({ msg: "Product added successfully !" });
+router.post("/newproduct", async (req: Request, res: Response) => {
+  try {
+    const newProductFromRequest = req.body;
+    const newProduct = new products({ ...newProductFromRequest });
+    await newProduct.save();
+    res.status(201).json({ msg: "Product added successfully !" });
+  } catch (error) {
+    res.status(500).json({ msg: "Something went wrong !" });
+  }
 });
 
-router.delete("/delete/:id", (req: Request, res: Response) => {
-  const id = +req.params.id;
-  data.products = data.products.filter((p: ProductModel) => p.id !== id);
-  res.json({ msg: "Product deleted successfully !", success: true });
+router.delete("/delete/:id", async (req: Request, res: Response) => {
+  try {
+    let productId: number = parseInt(req.params.id);
+
+    let result = await products.deleteOne({ id: productId });
+    if (result.acknowledged && result.deletedCount) {
+      res.json({ msg: "Product Deleted successfully !" });
+    } else {
+      throw new Error("Something went wrong !");
+    }
+  } catch (error: any) {
+    console.log(error);
+    res.status(500).json({ msg: error?.message as string });
+  }
 });
 
-router.get("/video/:id", (req: Request, res: Response) => {
+router.get("/video/:id", async (req: Request, res: Response) => {
   // status code - 200 success | 201 creation | 206 success (partial content)
   // range header
   // 1st request (range bytes=0-)
@@ -39,9 +50,8 @@ router.get("/video/:id", (req: Request, res: Response) => {
   try {
     // get the id
     const productId: number = +req.params.id || 0;
-    const product =
-      data.products.find(p => p.id == productId) || new ProductModel(); // can come from DB !
-    const videoUrl: string = product.videoUrl;
+    const product = await products.findOne({ id: productId }); // can come from DB !
+    const videoUrl: string = product?.videoUrl || "";
     let videoPath = path.resolve(videoUrl);
     const videoSize = fs.statSync(videoPath).size;
     // console.log(videoSize);

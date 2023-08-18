@@ -27,7 +27,7 @@ router.post("/newuser", function (req, res, next) {
     return __awaiter(this, void 0, void 0, function* () {
         let { name, age } = req.body;
         let newUser = new users_model_1.default({ name, age });
-        yield newUser.save(); // inserts the new user
+        yield newUser.save(); // inserts the new user in the db
         res.json({ msg: "user addedd successfully !" });
     });
 });

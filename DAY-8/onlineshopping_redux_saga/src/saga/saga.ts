@@ -43,7 +43,7 @@ function* retryFetchProductsSaga() {
 }
 
 function deleteProductFromServer(id: number) {
-  return axios.delete("http://localhost:3500/products/" + id);
+  return axios.delete("http://localhost:5555/products/delete/" + id);
 }
 
 function* deleteProductAsync(action: PayloadAction<number>) {
