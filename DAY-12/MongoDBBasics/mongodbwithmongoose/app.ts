@@ -1,9 +1,14 @@
 import express, { Request, Response } from "express";
 import path from "path";
 import usersRouter from "./routes/users";
+import mongoose from "mongoose";
 
 var app = express();
 
+mongoose.connect("mongodb://localhost:27017/onlineshoppingdb");
+mongoose.connection.on("open", () => {
+  console.log("OnlineshoppingDB connected successfully ");
+});
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

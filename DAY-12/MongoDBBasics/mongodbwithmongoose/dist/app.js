@@ -6,7 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const users_1 = __importDefault(require("./routes/users"));
+const mongoose_1 = __importDefault(require("mongoose"));
 var app = (0, express_1.default)();
+mongoose_1.default.connect("mongodb://localhost:27017/onlineshoppingdb");
+mongoose_1.default.connection.on("open", () => {
+    console.log("OnlineshoppingDB connected successfully ");
+});
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
 app.use(express_1.default.static(path_1.default.join(__dirname, "public")));

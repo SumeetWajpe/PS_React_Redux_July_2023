@@ -1,9 +1,11 @@
 import express from "express";
 var router = express.Router();
-
+import User from "../models/users.model";
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("respond with a resource");
+router.get("/", async function (req, res, next) {
+  let users = await User.find({}); // select * from
+  console.log(users.length);
+  res.json({ users });
 });
 
 export default router;
