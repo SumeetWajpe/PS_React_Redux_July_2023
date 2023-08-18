@@ -19,7 +19,7 @@ type AxiosResponse = {
 };
 
 function getProducts() {
-  return axios.get<ProductModel[]>("http://localhost:3500/products");
+  return axios.get<ProductModel[]>("http://localhost:5555/products");
 }
 
 function* fetchProductsAsync() {
