@@ -17,13 +17,20 @@ const ProductDetails: React.FC = () => {
       <main>
         <div className="row">
           <div className="col-md-9">
-            <img
+            {/* <img
               src={theProduct?.imageUrl}
               className="card-img-top"
               alt={theProduct?.title}
               height="100%"
               width="100%"
-            />
+            /> */}
+
+            <video
+              height="100%"
+              width="100%"
+              controls
+              src={"http://localhost:5555/products/video/" + theProduct?.id}
+            ></video>
           </div>
           <div className="col-md-3 border-start">
             <h2>{theProduct?.title}</h2>
