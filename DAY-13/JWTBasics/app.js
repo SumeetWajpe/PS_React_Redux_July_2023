@@ -20,4 +20,4 @@ app.post("/verify", isAuthenticated, (req, res) => {
   return res.json({ msg: "success" });
 });
 
-app.listen(5001, () => console.log("Server running @ 5001 !"));
+app.listen(4001, () => console.log("Server running @ 4001 !"));
