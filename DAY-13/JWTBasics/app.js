@@ -15,4 +15,4 @@ app.post("/login", (req, res) => {
   }); // secret shud be from .env
 });
 
-app.listen(5001, () => console.log("Server running @ 5000 !"));
+app.listen(5001, () => console.log("Server running @ 5001 !"));
