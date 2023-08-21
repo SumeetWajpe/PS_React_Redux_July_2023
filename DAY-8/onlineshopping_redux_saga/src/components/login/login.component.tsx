@@ -41,6 +41,7 @@ const Login: React.FC = () => {
               .then(response => {
                 // console.log(response);
                 sessionStorage["jwt-token"] = response.token;
+                // dispatch an (redux) action (payload : token,username,isUserAuthenticated)
                 navigate("/dashboard");
               });
           })}
