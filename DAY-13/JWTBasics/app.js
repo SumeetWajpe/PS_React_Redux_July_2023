@@ -1,5 +1,6 @@
 import express from "express";
 import jwt from "jsonwebtoken";
+import { isAuthenticated } from "./middleware/auth.middleware.js";
 const SECRET_KEY = "MySecretKey";
 const app = express();
 app.use(express.json());
@@ -15,16 +16,8 @@ app.post("/login", (req, res) => {
   }); // secret shud be from .env
 });
 
-app.post("/verify", (req, res) => {
-  const header = req.headers.authorization;
-  const token = header.split(" ")[1];
-  jwt.verify(token, SECRET_KEY, (err, decodedToken) => {
-    if (err) {
-      return res.status(500).json({ err: "Invalid Token" });
-    } else {
-      res.json({ msg: "success" });
-    }
-  });
+app.post("/verify", isAuthenticated, (req, res) => {
+  return res.json({ msg: "success" });
 });
 
 app.listen(5001, () => console.log("Server running @ 5001 !"));
