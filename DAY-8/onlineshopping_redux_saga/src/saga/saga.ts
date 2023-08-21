@@ -56,7 +56,7 @@ function* deleteProductAsync(action: PayloadAction<number>) {
       yield put(deleteProduct(action.payload));
     }
   } catch (error) {
-    yield put(handleError("Something went wrong !")); // diaptch an action for error
+   // yield put(handleError("Something went wrong !")); // diaptch an action for error
   }
 }
 

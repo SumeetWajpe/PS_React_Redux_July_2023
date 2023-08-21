@@ -8,7 +8,9 @@ import dotenv from "dotenv";
 var app = express();
 dotenv.config();
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING || "", {});
+// mongoose.connect(process.env.MONGODB_CONNECTION_STRING || "", {});
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING_ATLAS || "", {});
+
 mongoose.connection.on("open", () => {
   console.log("OnlineshoppingDB connected successfully ");
 });
