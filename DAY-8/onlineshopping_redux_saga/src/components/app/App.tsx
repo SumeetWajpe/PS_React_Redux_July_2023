@@ -5,6 +5,7 @@ import Dashboard from "../dashboard/dashboard.component";
 import ProductDetails from "../productdetails/product.details";
 import NewProductWithHookForm from "../newproduct/newProduct.reacthookform";
 import React, { Suspense } from "react";
+import Login from "../login/login.component";
 // import Posts from "../posts/posts.component";
 const Posts = React.lazy(() => import("../posts/posts.component"));
 
@@ -12,6 +13,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Login />} />
+
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<ListOfProducts />} />
           <Route path="productdetails/:id" element={<ProductDetails />} />
