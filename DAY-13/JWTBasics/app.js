@@ -20,4 +20,8 @@ app.post("/verify", isAuthenticated, (req, res) => {
   return res.json({ msg: "success" });
 });
 
+app.get("/getusers", isAuthenticated, (req, res) => {
+  return res.json({ users: ["sumeet"] });
+});
+
 app.listen(4001, () => console.log("Server running @ 4001 !"));

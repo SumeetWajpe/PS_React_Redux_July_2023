@@ -1,11 +1,12 @@
 import express, { Request, Response } from "express";
 import products from "../models/products.model";
+import { isAuthenticated } from "../middleware/auth.middleware";
 import path from "path";
 import fs from "fs";
 
 const router = express.Router();
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/", isAuthenticated, async (req: Request, res: Response) => {
   try {
     let listofproductfromDB = await products.find({});
     res.json(listofproductfromDB);
@@ -14,32 +15,40 @@ router.get("/", async (req: Request, res: Response) => {
   }
 });
 
-router.post("/newproduct", async (req: Request, res: Response) => {
-  try {
-    const newProductFromRequest = req.body;
-    const newProduct = new products({ ...newProductFromRequest });
-    await newProduct.save();
-    res.status(201).json({ msg: "Product added successfully !" });
-  } catch (error) {
-    res.status(500).json({ msg: "Something went wrong !" });
-  }
-});
-
-router.delete("/delete/:id", async (req: Request, res: Response) => {
-  try {
-    let productId: number = parseInt(req.params.id);
-
-    let result = await products.deleteOne({ id: productId });
-    if (result.acknowledged && result.deletedCount) {
-      res.json({ msg: "Product Deleted successfully !" });
-    } else {
-      throw new Error("Something went wrong !");
+router.post(
+  "/newproduct",
+  isAuthenticated,
+  async (req: Request, res: Response) => {
+    try {
+      const newProductFromRequest = req.body;
+      const newProduct = new products({ ...newProductFromRequest });
+      await newProduct.save();
+      res.status(201).json({ msg: "Product added successfully !" });
+    } catch (error) {
+      res.status(500).json({ msg: "Something went wrong !" });
     }
-  } catch (error: any) {
-    console.log(error);
-    res.status(500).json({ msg: error?.message as string });
-  }
-});
+  },
+);
+
+router.delete(
+  "/delete/:id",
+  isAuthenticated,
+  async (req: Request, res: Response) => {
+    try {
+      let productId: number = parseInt(req.params.id);
+
+      let result = await products.deleteOne({ id: productId });
+      if (result.acknowledged && result.deletedCount) {
+        res.json({ msg: "Product Deleted successfully !" });
+      } else {
+        throw new Error("Something went wrong !");
+      }
+    } catch (error: any) {
+      console.log(error);
+      res.status(500).json({ msg: error?.message as string });
+    }
+  },
+);
 
 router.get("/video/:id", async (req: Request, res: Response) => {
   // status code - 200 success | 201 creation | 206 success (partial content)

@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import productsRouter from "./routes/products.routes";
 import mongoose from "mongoose";
-
+import authRouter from "./routes/auth.routes";
 import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -9,7 +9,7 @@ var app = express();
 dotenv.config();
 
 // mongoose.connect(process.env.MONGODB_CONNECTION_STRING || "", {});
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING_ATLAS || "", {});
+mongoose.connect(process.env.MONGODB_CONNECTION_STRING || "", {});
 
 mongoose.connection.on("open", () => {
   console.log("OnlineshoppingDB connected successfully ");
@@ -21,6 +21,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, "public")));
 // adding routes
+app.use("/login", authRouter);
+
 app.use("/products", productsRouter);
 
 app.listen(5555, () => console.log(`Server running @ port 5555 !`));

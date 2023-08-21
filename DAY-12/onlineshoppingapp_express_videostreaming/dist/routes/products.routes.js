@@ -14,10 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const products_model_1 = __importDefault(require("../models/products.model"));
+const auth_middleware_1 = require("../middleware/auth.middleware");
 const path_1 = __importDefault(require("path"));
 const fs_1 = __importDefault(require("fs"));
 const router = express_1.default.Router();
-router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/", auth_middleware_1.isAuthenticated, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let listofproductfromDB = yield products_model_1.default.find({});
         res.json(listofproductfromDB);
@@ -26,7 +27,7 @@ router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(500).json({ msg: "Something went wrong !" });
     }
 }));
-router.post("/newproduct", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.post("/newproduct", auth_middleware_1.isAuthenticated, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newProductFromRequest = req.body;
         const newProduct = new products_model_1.default(Object.assign({}, newProductFromRequest));
@@ -37,7 +38,7 @@ router.post("/newproduct", (req, res) => __awaiter(void 0, void 0, void 0, funct
         res.status(500).json({ msg: "Something went wrong !" });
     }
 }));
-router.delete("/delete/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete("/delete/:id", auth_middleware_1.isAuthenticated, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let productId = parseInt(req.params.id);
         let result = yield products_model_1.default.deleteOne({ id: productId });
