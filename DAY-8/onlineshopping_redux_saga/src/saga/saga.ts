@@ -19,7 +19,12 @@ type AxiosResponse = {
 };
 
 function getProducts() {
-  return axios.get<ProductModel[]>("http://localhost:5555/products");
+  let token = sessionStorage["jwt-token"];
+  return axios.get<ProductModel[]>("http://localhost:5555/products", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 }
 
 function* fetchProductsAsync() {
@@ -56,7 +61,7 @@ function* deleteProductAsync(action: PayloadAction<number>) {
       yield put(deleteProduct(action.payload));
     }
   } catch (error) {
-   // yield put(handleError("Something went wrong !")); // diaptch an action for error
+    // yield put(handleError("Something went wrong !")); // diaptch an action for error
   }
 }
 
