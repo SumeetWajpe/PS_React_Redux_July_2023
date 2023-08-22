@@ -9,7 +9,7 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 var router = express_1.default.Router();
 router.post("/", (req, res) => {
     // get username + pwd from req.body
-    // verify the user from db
+    // insert the user in db
     // sign / create the token
     let saltRounds = 10;
     let userInfo = req.body;

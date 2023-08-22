@@ -5,7 +5,7 @@ var router = express.Router();
 
 router.post("/", (req: Request, res: Response) => {
   // get username + pwd from req.body
-  // verify the user from db
+  // insert the user in db
   // sign / create the token
   let saltRounds = 10;
   let userInfo = req.body;

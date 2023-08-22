@@ -1,6 +1,6 @@
 import { call, put, retry, takeLatest } from "redux-saga/effects";
 import { SagaActions } from "./sagaactions";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { ProductModel } from "../models/product.model";
 import {
   deleteProduct,
@@ -9,17 +9,16 @@ import {
 } from "../redux/slices/products.slices";
 import { PayloadAction } from "@reduxjs/toolkit";
 
-type AxiosResponse = {
-  data: ProductModel[];
-  status: number;
-  statusText: string;
-  headers: any;
-  config: any;
-  request: any;
-};
+// type AxiosResponse = {
+//   data: ProductModel[];
+//   status: number;
+//   statusText: string;
+//   headers: any;
+//   config: any;
+//   request: any;
+// };
 
-function getProducts() {
-  let token = sessionStorage["jwt-token"];
+function getProducts(token: string) {
   return axios.get<ProductModel[]>("http://localhost:5555/products", {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -27,9 +26,12 @@ function getProducts() {
   });
 }
 
-function* fetchProductsAsync() {
+function* fetchProductsAsync(action: PayloadAction<string>) {
   try {
-    let response: AxiosResponse = yield call(getProducts);
+    let response: AxiosResponse<ProductModel[]> = yield call(
+      getProducts,
+      action.payload,
+    );
     //   console.log(response.data);
     yield put(setAllProducts(response.data)); // dispatching the action to reducer
   } catch (error) {
@@ -37,17 +39,18 @@ function* fetchProductsAsync() {
   }
 }
 
-function* retryFetchProductsSaga() {
-  try {
-    const SECOND = 1000;
-    const response: AxiosResponse = yield retry(3, 10 * SECOND, getProducts);
-    yield put(setAllProducts(response.data));
-  } catch (error) {
-    console.log(error);
-  }
-}
+// function* retryFetchProductsSaga() {
+//   try {
+//     const SECOND = 1000;
+//     const response: AxiosResponse = yield retry(3, 10 * SECOND, getProducts,token);
+//     yield put(setAllProducts(response.data));
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 function deleteProductFromServer(id: number) {
+  // add the token - auth header
   return axios.delete("http://localhost:5555/products/delete/" + id);
 }
 

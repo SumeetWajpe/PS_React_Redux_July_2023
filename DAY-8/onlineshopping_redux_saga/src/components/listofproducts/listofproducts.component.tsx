@@ -13,7 +13,8 @@ let ListOfProducts: React.FC = () => {
   let dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch({ type: SagaActions.FETCH_PRODUCTS_ASYNC });
+    let token = sessionStorage["jwt-token"];
+    dispatch({ type: SagaActions.FETCH_PRODUCTS_ASYNC, payload: token });
   }, []);
   return (
     <>
