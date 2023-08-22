@@ -6,6 +6,7 @@ import ProductDetails from "../productdetails/product.details";
 import NewProductWithHookForm from "../newproduct/newProduct.reacthookform";
 import React, { Suspense } from "react";
 import Login from "../login/login.component";
+import RequireAuth from "../requireauth.hoc/requireauth.component";
 // import Posts from "../posts/posts.component";
 const Posts = React.lazy(() => import("../posts/posts.component"));
 
@@ -15,7 +16,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
 
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
           <Route index element={<ListOfProducts />} />
           <Route path="productdetails/:id" element={<ProductDetails />} />
           <Route path="newproduct" element={<NewProductWithHookForm />} />
