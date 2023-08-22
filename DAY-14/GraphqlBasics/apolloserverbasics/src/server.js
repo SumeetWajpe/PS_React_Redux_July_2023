@@ -1,16 +1,28 @@
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 
+let booksData = [
+  { id: 1, title: "Wings Of Fire", price: 350 },
+  { id: 2, title: "Ikigai", price: 550 },
+  { id: 3, title: "Kaizen", price: 450 },
+];
+
 const typeDefs = `#graphql
 type Query{
-    hello:String
+    books:[Book] #List of book type
+}
+
+type Book{
+    id:ID!
+    title:String
+    price:Int
 }
 
 `;
 
 const resolvers = {
   Query: {
-    hello: () => "Hello Graphql !",
+    books: () => booksData,
   },
 };
 
