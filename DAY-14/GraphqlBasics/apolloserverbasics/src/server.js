@@ -10,6 +10,7 @@ let booksData = [
 const typeDefs = `#graphql
 type Query{
     books:[Book] #List of book type
+    book(id:ID!):Book
 }
 
 type Book{
@@ -23,6 +24,7 @@ type Book{
 const resolvers = {
   Query: {
     books: () => booksData,
+    book: (_, args) => booksData.find(book => book.id == args.id),
   },
 };
 

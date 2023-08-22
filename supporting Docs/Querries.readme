@@ -1,0 +1,17 @@
+#Get All Books with operation name
+query GetAllBooks{
+  books {
+    
+    title
+    price
+  }
+}
+
+#Get Book By Id (HardCoded)
+
+query GetBookById{
+  book(id: 3) {
+    title
+    price
+  }
+}
