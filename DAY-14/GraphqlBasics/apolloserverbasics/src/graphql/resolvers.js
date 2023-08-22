@@ -7,4 +7,9 @@ export const resolvers = {
     authors: () => authorsData,
     author: (_, { id }) => authorsData.find(author => author.id == id),
   },
+  Book: {
+    author: parent => {
+      return authorsData.find(author=>author.id == parent.authorId)
+    },
+  },
 };

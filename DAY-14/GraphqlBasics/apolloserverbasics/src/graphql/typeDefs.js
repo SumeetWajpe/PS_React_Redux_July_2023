@@ -10,6 +10,7 @@ type Book{
     id:ID!
     title:String
     price:Int
+    author:Author
 }
 
 type Author{
