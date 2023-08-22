@@ -12,6 +12,7 @@ type LoginInput = {
 const Login: React.FC = () => {
   let navigate = useNavigate();
   let dispatch = useDispatch();
+  let location = useLocation();
   const {
     register,
     handleSubmit,
@@ -51,7 +52,7 @@ const Login: React.FC = () => {
                   }),
                 );
                 // dispatch an (redux) action (payload : token,username,isUserAuthenticated)
-                navigate("/dashboard");
+                navigate(location.state ?? "/dashboard", { replace: true }); // replace the entry in history
               });
           })}
         >

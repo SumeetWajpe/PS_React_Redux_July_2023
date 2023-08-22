@@ -1,8 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CartCount from "../cart/cartcount/cartcount.component";
+import { useAuth } from "../../hooks/useAuth";
 
 const Header = () => {
+  const user = useAuth();
+  const navigate = useNavigate();
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -52,7 +55,18 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <CartCount />
+        <div className="d-flex">
+          Hello <strong>{user.uname}</strong> !
+          <CartCount />
+          <span>
+            <button
+              className="btn btn-outline-secondary"
+              onClick={() => navigate("/", { replace: true })}
+            >
+              Logout
+            </button>
+          </span>
+        </div>
       </div>
     </nav>
   );

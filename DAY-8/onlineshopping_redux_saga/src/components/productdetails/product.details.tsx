@@ -46,7 +46,7 @@ const ProductDetails: React.FC = () => {
             <div>{theProduct?.description}</div>
             <button
               className="btn btn-success"
-              onClick={() => navigate("/dashboard/products")}
+              onClick={() => navigate("/dashboard")}
             >
               <i className="fa-solid fa-arrow-left"></i>
             </button>
@@ -58,4 +58,3 @@ const ProductDetails: React.FC = () => {
 };
 
 export default ProductDetails;
-
