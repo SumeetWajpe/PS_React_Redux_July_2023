@@ -31,7 +31,7 @@ function App() {
           {/* <Route path="getproductbyid" element={<GetProductById />} /> */}
         </Route>
 
-        <Route path="*" element={<Navigate to="/dashboard" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );
