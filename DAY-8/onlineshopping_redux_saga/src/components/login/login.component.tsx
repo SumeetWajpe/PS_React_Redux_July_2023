@@ -3,6 +3,7 @@ import "./login.css";
 import { useForm } from "react-hook-form";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { setUserAuthenticated } from "../../redux/slices/auth.slice";
 
 type LoginInput = {
   uname: string;
@@ -10,6 +11,7 @@ type LoginInput = {
 };
 const Login: React.FC = () => {
   let navigate = useNavigate();
+  let dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -41,6 +43,13 @@ const Login: React.FC = () => {
               .then(response => {
                 // console.log(response);
                 sessionStorage["jwt-token"] = response.token;
+                dispatch(
+                  setUserAuthenticated({
+                    isUserAuthenticated: true,
+                    uname: data.uname,
+                    token: response.token,
+                  }),
+                );
                 // dispatch an (redux) action (payload : token,username,isUserAuthenticated)
                 navigate("/dashboard");
               });
