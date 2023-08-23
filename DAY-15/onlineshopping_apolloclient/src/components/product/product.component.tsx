@@ -1,12 +1,22 @@
 import { useState } from "react";
 import { ProductModel } from "../../models/product.model";
 import Rating from "../rating/rating.component";
+import { useMutation } from "@apollo/client";
+import { DELETE_A_PRODUCT } from "../../graphql/mutations";
+import { GETALLPRODUCTS } from "../../graphql/querries";
 
 type ProductProps = {
   productdetails: ProductModel;
 };
 
 let Product: React.FC<ProductProps> = (props: ProductProps) => {
+  const [deleteProduct, { error, loading, data }] = useMutation(
+    DELETE_A_PRODUCT,
+    {
+      variables: { id: props.productdetails.id },
+      refetchQueries: [{ query: GETALLPRODUCTS }],
+    },
+  );
   return (
     <div className="col-md-3 my-1">
       <div className="card">
@@ -37,7 +47,10 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
               <i className="fa-regular fa-thumbs-up"></i>
             </button>
 
-            <button className="btn btn-outline-danger mx-1">
+            <button
+              className="btn btn-outline-danger mx-1"
+              onClick={() => deleteProduct()}
+            >
               <i className="fa-solid fa-trash"></i>
             </button>
             <div className="d-flex align-items-center">
