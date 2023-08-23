@@ -7,7 +7,15 @@ type Query{
 }
 
 type Mutation{
-    addNewBook(id:ID!,title:String,price:Int,authorId:Int):Book
+    # addNewBook(id:ID!,title:String,price:Int,authorId:Int):Book
+    addNewBook(newBook:NewBook):Book
+}
+
+input NewBook{
+    id:ID!
+    title:String
+    price:Int
+    authorId:Int
 }
 
 type Book{

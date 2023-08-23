@@ -13,8 +13,8 @@ export const resolvers = {
     },
   },
   Mutation: {
-    addNewBook: (_, { id, title, price, authorId }) => {
-      let newBookToBeAdded = { id, title, price, authorId };
+    addNewBook: (_, { newBook }) => {
+      let newBookToBeAdded = newBook;
       booksData.push(newBookToBeAdded);
       return newBookToBeAdded;
     },
