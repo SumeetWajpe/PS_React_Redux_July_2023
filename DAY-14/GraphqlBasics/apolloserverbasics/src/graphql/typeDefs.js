@@ -6,6 +6,10 @@ type Query{
     author(id:ID!):Author
 }
 
+type Mutation{
+    addNewBook(id:ID!,title:String,price:Int,authorId:Int):Book
+}
+
 type Book{
     id:ID!
     title:String
@@ -19,5 +23,6 @@ type Author{
     age:Int
     noofBooksWritten:Int
 }
+
 
 `;

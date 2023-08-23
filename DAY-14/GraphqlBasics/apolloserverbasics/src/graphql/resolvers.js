@@ -12,4 +12,11 @@ export const resolvers = {
       return authorsData.find(author => author.id == parent.authorId);
     },
   },
+  Mutation: {
+    addNewBook: (_, { id, title, price, authorId }) => {
+      let newBookToBeAdded = { id, title, price, authorId };
+      booksData.push(newBookToBeAdded);
+      return newBookToBeAdded;
+    },
+  },
 };

@@ -44,3 +44,11 @@ fragment allFields on Author {
     age
     noofBooksWritten
 }
+
+#Mutation
+
+mutation Mutation($addNewBookId: ID!, $title: String, $price: Int, $authorId: Int) {
+  addNewBook(id: $addNewBookId, title: $title, price: $price, authorId: $authorId) {
+    title
+  }
+}
