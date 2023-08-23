@@ -9,6 +9,7 @@ type Query{
 type Mutation{
     # addNewBook(id:ID!,title:String,price:Int,authorId:Int):Book
     addNewBook(newBook:NewBook):Book
+    deleteABook(id:ID!):Book
 }
 
 input NewBook{

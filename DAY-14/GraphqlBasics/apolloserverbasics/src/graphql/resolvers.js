@@ -18,5 +18,10 @@ export const resolvers = {
       booksData.push(newBookToBeAdded);
       return newBookToBeAdded;
     },
+    deleteABook: (_, { id }) => {
+      let index = booksData.findIndex(b => b.id == id);
+      let item = booksData.splice(index, 1);
+      return item[0];
+    },
   },
 };
