@@ -6,7 +6,12 @@ const { json } = pkg;
 import express from "express";
 import { resolvers } from "../schema/resolvers.js";
 import { typeDefs } from "../schema/typedefs.js";
+import mongoose from "mongoose";
 const app = express();
+mongoose.connect("mongodb://localhost:27017/onlineshoppingdb" || "", {});
+mongoose.connection.on("open", () => {
+    console.log("OnlineshoppingDB connected successfully ");
+});
 const server = new ApolloServer({
     typeDefs,
     resolvers,

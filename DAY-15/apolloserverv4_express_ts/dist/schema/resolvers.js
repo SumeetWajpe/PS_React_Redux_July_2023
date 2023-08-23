@@ -1,8 +1,6 @@
+import Product from "../models/products.model.js";
 export const resolvers = {
     Query: {
-        products: () => [
-            { id: 1, title: "Macbook Pro" },
-            { id: 2, title: "DJI Mavic Pro" },
-        ],
+        products: async () => await Product.find({}),
     },
 };
