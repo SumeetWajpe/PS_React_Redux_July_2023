@@ -8,8 +8,8 @@ export const resolvers = {
     author: (_, { id }) => authorsData.find(author => author.id == id),
   },
   Book: {
-    author: parent => {
-      return authorsData.find(author=>author.id == parent.authorId)
+    authorDetails: parent => {
+      return authorsData.find(author => author.id == parent.authorId);
     },
   },
 };
