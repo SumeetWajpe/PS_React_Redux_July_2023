@@ -16,17 +16,17 @@ const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
   cache: new InMemoryCache(),
 });
-client
-  .query({
-    query: gql`
-      query GetProducts {
-        products {
-          title
-        }
-      }
-    `,
-  })
-  .then(result => console.log(result));
+// client
+//   .query({
+//     query: gql`
+//       query GetProducts {
+//         products {
+//           title
+//         }
+//       }
+//     `,
+//   })
+  // .then(result => console.log(result));
 root.render(
   <ApolloProvider client={client}>
     <App />
