@@ -3,8 +3,14 @@ import { ProductModel } from "../../models/product.model";
 import { useForm } from "react-hook-form";
 
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { ADD_NEW_PRODUCT } from "../../graphql/mutations";
+import { GETALLPRODUCTS } from "../../graphql/querries";
 
 const NewProductWithHookForm = () => {
+  let [addNewProduct, { error, loading, data }] = useMutation(ADD_NEW_PRODUCT, {
+    refetchQueries: [{ query: GETALLPRODUCTS }],
+  });
   const navigate = useNavigate();
 
   const {
@@ -21,6 +27,19 @@ const NewProductWithHookForm = () => {
         <form
           onSubmit={handleSubmit(
             ({ id, title, price, rating, imageUrl, description, likes }) => {
+              addNewProduct({
+                variables: {
+                  newProduct: {
+                    id,
+                    title,
+                    price: +price,
+                    rating: +rating,
+                    imageUrl,
+                    description,
+                    likes: +likes,
+                  },
+                },
+              });
               navigate("/");
             },
           )}
