@@ -49,6 +49,7 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
 
             <button
               className="btn btn-outline-danger mx-1"
+              // onClick={() => deleteProduct({ variables: { id: 3 } })} // higher preference
               onClick={() => deleteProduct()}
             >
               <i className="fa-solid fa-trash"></i>
