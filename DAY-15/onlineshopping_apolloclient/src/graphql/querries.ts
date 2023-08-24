@@ -15,3 +15,18 @@ query GetAllProducts {
 }
 
 `;
+
+export const GET_PRODUCT_BY_ID = gql`
+  query GetProductById($productId: ID!) {
+    product(id: $productId) {
+      id
+      title
+      price
+      likes
+      rating
+      imageUrl
+      videoUrl
+      description
+    }
+  }
+`;

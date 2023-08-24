@@ -4,6 +4,7 @@ import Rating from "../rating/rating.component";
 import { useMutation } from "@apollo/client";
 import { DELETE_A_PRODUCT } from "../../graphql/mutations";
 import { GETALLPRODUCTS } from "../../graphql/querries";
+import { Link } from "react-router-dom";
 
 type ProductProps = {
   productdetails: ProductModel;
@@ -20,15 +21,15 @@ let Product: React.FC<ProductProps> = (props: ProductProps) => {
   return (
     <div className="col-md-3 my-1">
       <div className="card">
-        {/* <Link to={`/dashboard/productdetails/${props.productdetails.id}`}> */}
-        <img
-          src={props.productdetails.imageUrl}
-          className="card-img-top"
-          alt={props.productdetails.title}
-          height="150px"
-          width="200px"
-        />
-        {/* </Link> */}
+        <Link to={`/productdetails/${props.productdetails.id}`}>
+          <img
+            src={props.productdetails.imageUrl}
+            className="card-img-top"
+            alt={props.productdetails.title}
+            height="150px"
+            width="200px"
+          />
+        </Link>
 
         <div className="card-body">
           <h5 className="card-title">{props.productdetails.title}</h5>

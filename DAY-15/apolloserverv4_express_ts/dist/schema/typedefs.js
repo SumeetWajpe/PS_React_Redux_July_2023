@@ -4,9 +4,11 @@ type Query{
     product(id:ID!):Product
 }
    type Mutation{
+    
     addNewProduct(newProduct:NewProductInput):Product
     deleteAProduct(id:ID!):String
    }
+
 
    input NewProductInput{
      id:ID!

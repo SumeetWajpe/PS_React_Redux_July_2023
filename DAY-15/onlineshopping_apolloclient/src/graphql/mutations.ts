@@ -6,8 +6,9 @@ export const DELETE_A_PRODUCT = gql`
   }
 `;
 export const ADD_NEW_PRODUCT = gql`
-  mutation AddNewProductMutation($newProduct: NewProductInput) {
-    addNewProduct(newProduct: $newProduct) {
+  mutation AddNewProductMutation($inputdata: NewProductInput) {
+    addNewProduct(newProduct: $inputdata) {
+      id
       title
     }
   }

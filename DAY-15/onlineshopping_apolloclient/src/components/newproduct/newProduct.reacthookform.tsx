@@ -29,7 +29,7 @@ const NewProductWithHookForm = () => {
             ({ id, title, price, rating, imageUrl, description, likes }) => {
               addNewProduct({
                 variables: {
-                  newProduct: {
+                  inputdata: {
                     id,
                     title,
                     price: +price,
