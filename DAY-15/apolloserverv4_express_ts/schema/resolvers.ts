@@ -4,7 +4,7 @@ import { ProductModel } from "../types/product.type.js";
 export const resolvers = {
   Query: {
     products: async (_, { limit, offset }: { limit: number; offset: number }) =>
-      await Product.find({}).sort({ title: 1 }).skip(offset).limit(limit),
+      await Product.find({}).sort({ title: 1 }).skip(offset).limit(limit), // will be sorted with title in ascending order
     product: async (_, { id }: { id: number }) => await Product.findOne({ id }),
   },
   Mutation: {
