@@ -2,7 +2,14 @@ import Product from "../models/products.model.js";
 export const resolvers = {
     Query: {
         products: async (_, { limit, offset }) => await Product.find({}).sort({ title: 1 }).skip(offset).limit(limit),
-        product: async (_, { id }) => await Product.findOne({ id }),
+        product: async (_, { id }) => {
+            try {
+                await Product.findOne({ id });
+            }
+            catch (error) {
+                return { msg: `Something went wrong  - ${error.message}` };
+            }
+        },
     },
     Mutation: {
         addNewProduct: async (_, { newProduct }) => {
