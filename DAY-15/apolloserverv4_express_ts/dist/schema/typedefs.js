@@ -1,6 +1,6 @@
 export const typeDefs = `#graphql
 type Query{
-    products:[Product]
+    products(limit:Int!,offset:Int!):[Product]
     product(id:ID!):Product
 }
    type Mutation{

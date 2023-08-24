@@ -1,7 +1,7 @@
 import Product from "../models/products.model.js";
 export const resolvers = {
     Query: {
-        products: async () => await Product.find({}),
+        products: async (_, { limit, offset }) => await Product.find({}).sort({ title: 1 }).skip(offset).limit(limit),
         product: async (_, { id }) => await Product.findOne({ id }),
     },
     Mutation: {

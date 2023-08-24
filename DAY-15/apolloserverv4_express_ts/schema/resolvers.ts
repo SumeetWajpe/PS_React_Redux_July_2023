@@ -3,7 +3,8 @@ import { ProductModel } from "../types/product.type.js";
 
 export const resolvers = {
   Query: {
-    products: async () => await Product.find({}),
+    products: async (_, { limit, offset }: { limit: number; offset: number }) =>
+      await Product.find({}).sort({ title: 1 }).skip(offset).limit(limit),
     product: async (_, { id }: { id: number }) => await Product.findOne({ id }),
   },
   Mutation: {
